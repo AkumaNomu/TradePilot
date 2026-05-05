@@ -6,7 +6,7 @@ import { MotionItem, MotionStagger } from "@/components/MotionPrimitives";
 
 export function SolutionsSection() {
   return (
-    <section id="solutions" className="px-5 py-section-gap md:px-8">
+    <section id="solutions" data-nav-section="solutions" className="px-5 py-section-gap md:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <MotionItem>
           <div>

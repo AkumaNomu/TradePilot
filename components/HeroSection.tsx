@@ -1,79 +1,130 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Rocket } from "lucide-react";
 import { LinkButton } from "@/components/Button";
-import { HeroVisual } from "@/components/HeroVisual";
-import { MotionReveal, MotionStagger, MotionItem } from "@/components/MotionPrimitives";
 import { AnimatedText } from "@/components/AnimatedText";
+import { HeroAtmosphere } from "@/components/HeroAtmosphere";
 import { hero } from "@/data/site";
 
+const cycleWords = ["Clarity", "Speed", "Precision", "Signal", "Sales Growth"];
+const wordDelays = [180, 170, 170, 180, 420];
+
 export function HeroSection() {
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    if (wordIndex >= cycleWords.length - 1) return;
+
+    const delay = window.setTimeout(() => {
+      setWordIndex((current) => Math.min(current + 1, cycleWords.length - 1));
+    }, wordDelays[wordIndex] ?? 360);
+
+    return () => window.clearTimeout(delay);
+  }, [wordIndex]);
+
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] px-5 py-20 md:px-8 lg:py-28">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-[12%] h-72 w-72 rounded-full bg-primary-container/20 blur-[100px]" />
-        <div className="absolute bottom-[8%] right-[10%] h-96 w-96 rounded-full bg-tertiary-container/20 blur-[120px]" />
+    <section data-nav-section="hero" className="relative flex min-h-[calc(100vh-5rem)] items-center justify-center overflow-hidden px-5 py-20 md:px-8 lg:py-24">
+      <div className="pointer-events-none absolute inset-0">
+        <HeroAtmosphere />
+        <motion.div
+          className="absolute left-[-8%] top-[8%] h-[26rem] w-[26rem] rounded-full bg-primary-container/16 blur-[120px]"
+          animate={{ x: [0, 26, 0], y: [0, -18, 0], opacity: [0.45, 0.7, 0.45] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute right-[-2%] top-[18%] h-[24rem] w-[24rem] rounded-full bg-secondary/10 blur-[120px]"
+          animate={{ x: [0, -22, 0], y: [0, 20, 0], opacity: [0.35, 0.6, 0.35] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-[-10%] left-[28%] h-[28rem] w-[28rem] rounded-full bg-tertiary-container/16 blur-[140px]"
+          animate={{ x: [0, 14, 0], y: [0, -24, 0], opacity: [0.3, 0.55, 0.3] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute inset-x-[-10%] top-[18%] h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          initial={{ opacity: 0, scaleX: 0.6 }}
+          animate={{ opacity: [0, 0.85, 0.25], scaleX: [0.6, 1.08, 1] }}
+          transition={{ duration: 1.8, ease: [0.2, 0.9, 0.2, 1] }}
+        />
+        <motion.div
+          className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-white/0 via-white/10 to-white/0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0.6, 0.18] }}
+          transition={{ duration: 2.1, ease: [0.2, 0.9, 0.2, 1], delay: 0.2 }}
+        />
         <div className="noise-overlay" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
-        <div>
-          <MotionStagger delayChildren={0.18} staggerChildren={0.12}>
-            <MotionItem>
-              <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-secondary/20 bg-slate-950/50 px-4 py-2 text-secondary shadow-cyan-glow backdrop-blur-xl">
-                <span className="h-2 w-2 rounded-full bg-secondary shadow-[0_0_12px_rgba(76,215,246,0.9)]" />
-                <span className="font-headline text-label-sm uppercase">
-                  <AnimatedText text={hero.eyebrow} mode="words" />
-                </span>
-              </div>
-            </MotionItem>
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
+        <div className="mx-auto max-w-4xl text-center">
+          <motion.h1
+            className="font-headline text-headline-xl text-white"
+            initial={{ opacity: 0, y: 28, filter: "blur(16px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.15, ease: [0.2, 0.9, 0.2, 1], delay: 0.16 }}
+          >
+            <AnimatedText text="Your AI Co-Pilot for" mode="letters" stagger={0.018} />
+            <br />
+            <span className="neon-text-glow inline-block min-h-[1.15em] bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={cycleWords[wordIndex]}
+                  className="inline-block"
+                  initial={{ opacity: 0, y: 12, filter: "blur(7px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -10, filter: "blur(7px)" }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <AnimatedText text={cycleWords[wordIndex]} mode="letters" stagger={0.02} />
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </motion.h1>
 
-            <MotionItem>
-              <h1 className="max-w-5xl font-headline text-headline-xl text-white">
-                <AnimatedText text="Your AI Co-Pilot for" mode="words" stagger={0.06} />
-                <span className="neon-text-glow ml-3 inline-block bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent">
-                  <AnimatedText text="Sales Growth" mode="letters" stagger={0.03} />
-                </span>
-              </h1>
-            </MotionItem>
-
-            <MotionItem>
-              <p className="mt-7 max-w-2xl text-body-lg text-on-surface-variant">
-                <AnimatedText text={hero.subtitle} mode="words" stagger={0.008} />
-              </p>
-            </MotionItem>
-
-            <MotionItem>
-              <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-                <LinkButton href="#demo">
-                  {hero.primaryCta}
-                  <Rocket size={16} />
-                </LinkButton>
-                <LinkButton href="#platform" variant="secondary">
-                  {hero.secondaryCta}
-                  <ArrowRight size={16} />
-                </LinkButton>
-              </div>
-            </MotionItem>
-
-            <MotionItem>
-              <MotionStagger className="mt-10 grid max-w-2xl grid-cols-3 gap-3" staggerChildren={0.1}>
-                {hero.stats.map((stat) => (
-                  <MotionItem key={stat.label}>
-                    <div className="glass-panel rounded-2xl px-4 py-4">
-                      <p className="font-headline text-2xl font-bold text-white">{stat.value}</p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.12em] text-on-surface-variant">{stat.label}</p>
-                    </div>
-                  </MotionItem>
-                ))}
-              </MotionStagger>
-            </MotionItem>
-          </MotionStagger>
+          <motion.div
+            className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: { transition: { delayChildren: 0.56, staggerChildren: 0.13 } }
+            }}
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 18, scale: 0.98, filter: "blur(10px)" },
+                show: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
+              }}
+              transition={{ duration: 0.72, ease: [0.2, 0.9, 0.2, 1] }}
+            >
+              <LinkButton href="#demo">
+                {hero.primaryCta}
+                <Rocket size={16} />
+              </LinkButton>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 18, scale: 0.98, filter: "blur(10px)" },
+                show: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
+              }}
+              transition={{ duration: 0.72, ease: [0.2, 0.9, 0.2, 1] }}
+            >
+              <motion.a
+                href="#platform"
+                className="glass-panel inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 font-headline text-label-md uppercase tracking-[0.16em] text-white transition duration-300 hover:bg-white/[0.06] focus:outline-none focus:ring-2 focus:ring-secondary/50"
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              >
+                {hero.secondaryCta}
+                <ArrowRight size={16} />
+              </motion.a>
+            </motion.div>
+          </motion.div>
         </div>
-
-        <MotionReveal delay={0.15}>
-          <HeroVisual />
-        </MotionReveal>
       </div>
     </section>
   );

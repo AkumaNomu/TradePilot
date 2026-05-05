@@ -6,11 +6,41 @@ import { navLinks } from "@/data/site";
 import { LinkButton } from "@/components/Button";
 import { motion } from "framer-motion";
 
+const sectionLabels: Record<string, string> = {
+  hero: "Overview",
+  platform: "Platform",
+  "how-it-works": "Workflow",
+  intelligence: "Intelligence",
+  solutions: "Solutions",
+  demo: "Demo",
+  waitlist: "Waitlist"
+};
+
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     setMounted(true);
+
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-section]"));
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target instanceof HTMLElement) {
+          setActiveSection(visible.target.dataset.navSection || "hero");
+        }
+      },
+      { root: null, threshold: [0.22, 0.35, 0.5, 0.65] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -30,32 +60,35 @@ export function Navbar() {
               show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } }
             }}
           >
-            {navLinks.map((link, index) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
                 variants={{
                   hidden: { opacity: 0, y: -6, filter: "blur(6px)" },
                   show: { opacity: 1, y: 0, filter: "blur(0px)" }
                 }}
-                transition={{ duration: 0.6, ease: [0.2, 0.9, 0.2, 1] }}
-                style={{ willChange: "transform, opacity, filter" }}
-                className={
-                  index === 0
-                    ? "border-b-2 border-blue-500 pb-1 font-headline text-sm uppercase tracking-[0.08em] text-blue-300 transition hover:text-blue-200"
-                    : "font-headline text-sm uppercase tracking-[0.08em] text-slate-400 transition hover:text-blue-300"
-                }
-              >
-                {link.label}
-              </motion.a>
+                  transition={{ duration: 0.6, ease: [0.2, 0.9, 0.2, 1] }}
+                  style={{ willChange: "transform, opacity, filter" }}
+                  className={
+                    activeSection === link.href.slice(1)
+                      ? "border-b-2 border-blue-500 pb-1 font-headline text-sm uppercase tracking-[0.08em] text-blue-300 transition hover:text-blue-200"
+                      : "font-headline text-sm uppercase tracking-[0.08em] text-slate-400 transition hover:text-blue-300"
+                  }
+                >
+                  {link.label}
+                </motion.a>
             ))}
           </motion.div>
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <button className="font-headline text-sm uppercase tracking-[0.08em] text-slate-400 transition hover:text-blue-300">
-            Log In
-          </button>
+          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/45 px-4 py-2">
+            <span className="h-2 w-2 rounded-full bg-tertiary shadow-green-glow" />
+            <span className="font-headline text-[11px] uppercase tracking-[0.16em] text-slate-300">
+              {sectionLabels[activeSection] || "Overview"}
+            </span>
+          </div>
           <LinkButton href="#demo" className="px-5 py-3">
             View demo
           </LinkButton>

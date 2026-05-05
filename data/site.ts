@@ -64,7 +64,7 @@ export const platformFeatures: Feature[] = [
   {
     title: "Decision Dashboard",
     description:
-      "Turn raw metrics into live visual recommendations your team can use without digging through scattered reports.",
+      "Turn raw metrics into live visual insights your team can use without digging through scattered reports.",
     icon: BarChart3,
     tone: "cyan"
   }

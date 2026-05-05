@@ -13,7 +13,7 @@ const toneClasses = {
 
 export function PlatformSection() {
   return (
-    <section id="platform" className="relative px-5 py-section-gap md:px-8">
+    <section id="platform" data-nav-section="platform" className="relative px-5 py-section-gap md:px-8">
       <div className="mx-auto max-w-7xl">
         <MotionItem>
           <SectionHeading

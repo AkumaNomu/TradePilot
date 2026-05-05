@@ -16,7 +16,7 @@ export function WaitlistSection() {
   }
 
   return (
-    <section id="waitlist" className="relative px-5 py-20 md:px-8 lg:py-28">
+    <section id="waitlist" data-nav-section="waitlist" className="relative px-5 py-20 md:px-8 lg:py-28">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-[12%] bottom-[18%] h-96 w-96 rounded-full bg-primary-container/25 blur-[140px]" />
         <div className="absolute right-[12%] top-[10%] h-72 w-72 rounded-full bg-secondary/10 blur-[120px]" />

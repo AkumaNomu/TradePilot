@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { MouseReactiveBackground } from "@/components/MouseReactiveBackground";
 import { ScrollManager } from "@/components/ScrollManager";
 
 const inter = Inter({
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${spaceGrotesk.variable} bg-background font-body text-on-surface antialiased`}>
+        <MouseReactiveBackground />
         <ScrollManager />
         {children}
       </body>

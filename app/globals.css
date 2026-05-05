@@ -37,7 +37,7 @@ body::before {
     linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 72px 72px;
-  opacity: 0.08;
+  opacity: 0.035;
   mask-image: radial-gradient(circle at 50% 20%, black 10%, transparent 72%);
   z-index: 0;
 }
@@ -48,7 +48,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   background: radial-gradient(circle at 50% 20%, transparent 30%, rgba(0,0,0,0.45));
-  opacity: 0.9;
+  opacity: 0.82;
   z-index: 0;
 }
 
