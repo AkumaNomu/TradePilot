@@ -83,12 +83,6 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/45 px-4 py-2">
-            <span className="h-2 w-2 rounded-full bg-tertiary shadow-green-glow" />
-            <span className="font-headline text-[11px] uppercase tracking-[0.16em] text-slate-300">
-              {sectionLabels[activeSection] || "Overview"}
-            </span>
-          </div>
           <LinkButton href="#demo" className="px-5 py-3">
             View demo
           </LinkButton>

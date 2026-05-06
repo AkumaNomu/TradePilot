@@ -4,10 +4,10 @@ import { Activity, Sparkles, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 const signalDots = [
-  { className: "left-[18%] top-[42%]", delay: 0, duration: 3.2, size: "h-2 w-2", color: "bg-secondary", travel: { x: [0, 82, 174, 260], y: [0, -22, -40, 12] } },
-  { className: "right-[20%] top-[38%]", delay: 0.45, duration: 3.8, size: "h-1.5 w-1.5", color: "bg-primary", travel: { x: [0, -70, -156, -248], y: [0, -34, -18, 18] } },
-  { className: "left-[26%] bottom-[26%]", delay: 0.9, duration: 3.5, size: "h-2.5 w-2.5", color: "bg-tertiary", travel: { x: [0, 64, 126, 190], y: [0, -48, -112, -148] } },
-  { className: "right-[28%] bottom-[24%]", delay: 1.25, duration: 4.1, size: "h-2 w-2", color: "bg-secondary", travel: { x: [0, -62, -138, -205], y: [0, -38, -96, -142] } },
+  { className: "left-[18%] top-[42%]", delay: 0, duration: 9, size: "h-2 w-2", color: "bg-secondary", travel: { x: [0, 82, 174, 260], y: [0, -22, -40, 12] } },
+  { className: "right-[20%] top-[38%]", delay: 0.45, duration: 11, size: "h-1.5 w-1.5", color: "bg-primary", travel: { x: [0, -70, -156, -248], y: [0, -34, -18, 18] } },
+  { className: "left-[26%] bottom-[26%]", delay: 0.9, duration: 10, size: "h-2.5 w-2.5", color: "bg-tertiary", travel: { x: [0, 64, 126, 190], y: [0, -48, -112, -148] } },
+  { className: "right-[28%] bottom-[24%]", delay: 1.25, duration: 12, size: "h-2 w-2", color: "bg-secondary", travel: { x: [0, -62, -138, -205], y: [0, -38, -96, -142] } },
 ];
 
 const recommendations = [
@@ -91,9 +91,14 @@ export function HeroAtmosphere() {
         <motion.span
           key={dot.className}
           className={`absolute ${dot.className} ${dot.size} ${dot.color} rounded-full blur-[3px] shadow-cyan-glow opacity-80`}
-          initial={{ opacity: 0, scale: 0.35 }}
-          animate={{ opacity: [0, 0.95, 0.85, 0], scale: [0.35, 1.8, 1.15, 0.45], x: dot.travel.x, y: dot.travel.y }}
-          transition={{ duration: dot.duration, repeat: Infinity, repeatDelay: 0.7, ease: "easeInOut", delay: dot.delay }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: [0, 0.9, 0.9], scale: [0.9, 1.12, 0.9], x: dot.travel.x, y: dot.travel.y }}
+          transition={{
+            opacity: { duration: 1.1, ease: "easeOut", delay: dot.delay },
+            scale: { duration: dot.duration, repeat: Infinity, repeatType: "mirror", ease: "linear", delay: dot.delay },
+            x: { duration: dot.duration, repeat: Infinity, repeatType: "mirror", ease: "linear", delay: dot.delay },
+            y: { duration: dot.duration, repeat: Infinity, repeatType: "mirror", ease: "linear", delay: dot.delay }
+          }}
         />
       ))}
 
