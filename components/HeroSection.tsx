@@ -75,7 +75,7 @@ export function HeroSection() {
               }}
               transition={{ duration: 0.72, ease: [0.2, 0.9, 0.2, 1] }}
             >
-              <LinkButton href="#demo">
+              <LinkButton href="/onboarding/step-1">
                 {hero.primaryCta}
                 <Rocket size={16} />
               </LinkButton>

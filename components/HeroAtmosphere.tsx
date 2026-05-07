@@ -10,11 +10,6 @@ const signalDots = [
   { className: "right-[28%] bottom-[24%]", delay: 1.25, duration: 12, size: "h-2 w-2", color: "bg-secondary", travel: { x: [0, -62, -138, -205], y: [0, -38, -96, -142] } },
 ];
 
-const recommendations = [
-  { label: "Prioritize enterprise leads", icon: Target, delay: 1.1, duration: 5.8 },
-  { label: "Route warm accounts", icon: Sparkles, delay: 1.55, duration: 6.2 },
-  { label: "Watch churn cluster", icon: Activity, delay: 2, duration: 6.6 }
-];
 
 export function HeroAtmosphere() {
   return (
@@ -102,27 +97,6 @@ export function HeroAtmosphere() {
         />
       ))}
 
-      <div className="absolute inset-x-0 bottom-[8%] hidden justify-center md:flex">
-        <div className="flex max-w-4xl flex-wrap items-center justify-center gap-3 px-6">
-          {recommendations.map((recommendation) => {
-            const Icon = recommendation.icon;
-            return (
-              <motion.div
-                key={recommendation.label}
-                className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.025] px-4 py-2 text-white/85 backdrop-blur-sm"
-                initial={{ opacity: 0, y: 18, scale: 0.94, filter: "blur(10px)" }}
-                animate={{ opacity: [0, 0.92, 0.92, 0], y: [18, 0, -8, -20], scale: [0.94, 1, 1.01, 0.96], filter: ["blur(10px)", "blur(0px)", "blur(0px)", "blur(8px)"] }}
-                transition={{ duration: recommendation.duration, repeat: Infinity, repeatDelay: 1.4, ease: "easeInOut", delay: recommendation.delay }}
-              >
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-tertiary/10 text-tertiary">
-                  <Icon size={14} />
-                </span>
-                <span className="font-headline text-[0.68rem] font-bold uppercase tracking-[0.14em]">{recommendation.label}</span>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
 
       <motion.div
         className="absolute inset-x-[12%] bottom-[10%] h-px bg-gradient-to-r from-transparent via-tertiary/35 to-transparent"

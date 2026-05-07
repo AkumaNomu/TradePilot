@@ -83,7 +83,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <LinkButton href="#demo" className="px-5 py-3">
+          <LinkButton href="/onboarding/step-1" className="px-5 py-3">
             View demo
           </LinkButton>
         </div>
