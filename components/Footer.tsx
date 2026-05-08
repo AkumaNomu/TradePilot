@@ -5,9 +5,9 @@ import { MotionItem, MotionStagger } from "@/components/MotionPrimitives";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-slate-950 px-5 py-12 md:px-8">
+    <footer className="px-5 py-12 md:px-8">
       <MotionStagger
-        className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row"
+        className="glass-panel gradient-border mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-[2rem] px-6 py-8 md:flex-row md:px-8"
         staggerChildren={0.08}
       >
         <MotionItem>
@@ -33,4 +33,3 @@ export function Footer() {
     </footer>
   );
 }
-

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { ArrowRight, Rocket } from "lucide-react";
@@ -36,7 +36,12 @@ export function HeroSection() {
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 1.05, ease: [0.2, 0.9, 0.2, 1], delay: 0.12 }}
       >
-        <div className="mx-auto max-w-4xl text-center">
+        <motion.div
+          className="mx-auto max-w-4xl text-center"
+          initial={{ opacity: 0, y: 10, scale: 0.99, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.9, ease: [0.2, 0.9, 0.2, 1], delay: 0.18 }}
+        >
           <motion.p
             className="mb-5 font-headline text-label-md uppercase tracking-[0.18em] text-secondary"
             initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
@@ -58,6 +63,14 @@ export function HeroSection() {
               <AnimatedText text="Sales Growth" mode="letters" stagger={0.02} />
             </span>
           </motion.h1>
+          <motion.p
+            className="mx-auto mt-6 max-w-2xl text-body-md text-on-surface-variant"
+            initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, ease: [0.2, 0.9, 0.2, 1], delay: 0.32 }}
+          >
+            Identify, score, and convert your best clients through a unified AI powered platform.
+          </motion.p>
 
           <motion.div
             className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
@@ -75,7 +88,7 @@ export function HeroSection() {
               }}
               transition={{ duration: 0.72, ease: [0.2, 0.9, 0.2, 1] }}
             >
-              <LinkButton href="/onboarding/step-1">
+              <LinkButton href="/onboarding">
                 {hero.primaryCta}
                 <Rocket size={16} />
               </LinkButton>
@@ -99,8 +112,9 @@ export function HeroSection() {
               </motion.a>
             </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
 }
+

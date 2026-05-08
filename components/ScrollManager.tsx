@@ -11,6 +11,8 @@ function getTargetFromHash(hash: string) {
 
 export function ScrollManager() {
   useEffect(() => {
+    const clickListenerOptions: AddEventListenerOptions = { capture: true };
+
     function scrollToElement(el: HTMLElement, hash?: string) {
       const headerOffset = 88; // fixed navbar height + breathing room
       const rect = el.getBoundingClientRect();
@@ -42,14 +44,14 @@ export function ScrollManager() {
     }
 
     // Capture phase avoids the browser's default jump winning the race.
-    document.addEventListener("click", onClick, { capture: true });
+    document.addEventListener("click", onClick, clickListenerOptions);
     window.addEventListener("hashchange", onHashChange);
 
     // If the page loads with a hash, smooth scroll to it after mount.
     onHashChange();
 
     return () => {
-      document.removeEventListener("click", onClick, { capture: true } as any);
+      document.removeEventListener("click", onClick, clickListenerOptions);
       window.removeEventListener("hashchange", onHashChange);
     };
   }, []);

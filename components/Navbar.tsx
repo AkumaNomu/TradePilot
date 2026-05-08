@@ -2,27 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
-import { navLinks } from "@/data/site";
-import { LinkButton } from "@/components/Button";
 import { motion } from "framer-motion";
-
-const sectionLabels: Record<string, string> = {
-  hero: "Overview",
-  platform: "Platform",
-  "how-it-works": "Workflow",
-  intelligence: "Intelligence",
-  solutions: "Solutions",
-  demo: "Demo",
-  waitlist: "Waitlist"
-};
+import { navLinks } from "@/data/site";
 
 export function Navbar() {
-  const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    setMounted(true);
-
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-section]"));
     if (!sections.length) return;
 
@@ -54,38 +40,32 @@ export function Navbar() {
           <motion.div
             className="hidden items-center gap-7 md:flex"
             initial={false}
-            animate={mounted ? "show" : "hidden"}
+            animate="show"
             variants={{
               hidden: {},
               show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } }
             }}
           >
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
+            {navLinks.map((link) => (
+              <motion.a
+                key={link.href}
+                href={link.href}
                 variants={{
                   hidden: { opacity: 0, y: -6, filter: "blur(6px)" },
                   show: { opacity: 1, y: 0, filter: "blur(0px)" }
                 }}
-                  transition={{ duration: 0.6, ease: [0.2, 0.9, 0.2, 1] }}
-                  style={{ willChange: "transform, opacity, filter" }}
-                  className={
-                    activeSection === link.href.slice(1)
-                      ? "border-b-2 border-blue-500 pb-1 font-headline text-sm uppercase tracking-[0.08em] text-blue-300 transition hover:text-blue-200"
-                      : "font-headline text-sm uppercase tracking-[0.08em] text-slate-400 transition hover:text-blue-300"
-                  }
-                >
-                  {link.label}
-                </motion.a>
+                transition={{ duration: 0.6, ease: [0.2, 0.9, 0.2, 1] }}
+                style={{ willChange: "transform, opacity, filter" }}
+                className={
+                  activeSection === link.href.slice(1)
+                    ? "border-b-2 border-blue-500 pb-1 font-headline text-sm uppercase tracking-[0.08em] text-blue-300 transition hover:text-blue-200"
+                    : "font-headline text-sm uppercase tracking-[0.08em] text-slate-400 transition hover:text-blue-300"
+                }
+              >
+                {link.label}
+              </motion.a>
             ))}
           </motion.div>
-        </div>
-
-        <div className="hidden items-center gap-4 md:flex">
-          <LinkButton href="/onboarding/step-1" className="px-5 py-3">
-            View demo
-          </LinkButton>
         </div>
 
         <button className="rounded-full border border-white/10 p-2 text-white md:hidden" aria-label="Open navigation menu">
@@ -95,3 +75,4 @@ export function Navbar() {
     </header>
   );
 }
+

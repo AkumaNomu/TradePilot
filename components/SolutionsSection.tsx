@@ -9,7 +9,7 @@ export function SolutionsSection() {
     <section id="solutions" data-nav-section="solutions" className="px-5 py-section-gap md:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <MotionItem>
-          <div>
+          <div className="glass-panel gradient-border rounded-[2rem] p-6 md:p-8">
             <p className="font-headline text-label-md uppercase tracking-[0.22em] text-secondary">
               Custom AI Systems
             </p>

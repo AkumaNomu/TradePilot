@@ -19,10 +19,7 @@ import {
 export const navLinks = [
   { label: "Platform", href: "#platform" },
   { label: "How it works", href: "#how-it-works" },
-  { label: "Intelligence", href: "#intelligence" },
   { label: "Solutions", href: "#solutions" },
-  { label: "Demo", href: "#demo" },
-  { label: "Waitlist", href: "#waitlist" }
 ];
 
 export const hero = {

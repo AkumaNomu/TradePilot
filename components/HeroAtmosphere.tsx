@@ -1,6 +1,5 @@
 "use client";
 
-import { Activity, Sparkles, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 const signalDots = [
@@ -85,7 +84,7 @@ export function HeroAtmosphere() {
       {signalDots.map((dot) => (
         <motion.span
           key={dot.className}
-          className={`absolute ${dot.className} ${dot.size} ${dot.color} rounded-full blur-[3px] shadow-cyan-glow opacity-80`}
+          className={`absolute ${dot.className} ${dot.size} ${dot.color} rounded-full blur-[10px] shadow-cyan-glow opacity-65 mix-blend-screen`}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: [0, 0.9, 0.9], scale: [0.9, 1.12, 0.9], x: dot.travel.x, y: dot.travel.y }}
           transition={{
