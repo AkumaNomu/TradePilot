@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { MouseReactiveBackground } from "@/components/MouseReactiveBackground";
 import { ScrollManager } from "@/components/ScrollManager";
+import { TransitionProvider } from "@/components/TransitionProvider";
 
 export const metadata: Metadata = {
   title: "TradePilot - Revenue Intelligence",
@@ -18,7 +19,7 @@ export default function RootLayout({
       <body className="bg-background font-body text-on-surface antialiased">
         <MouseReactiveBackground />
         <ScrollManager />
-        {children}
+        <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
   );

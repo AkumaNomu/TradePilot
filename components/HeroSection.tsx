@@ -1,34 +1,104 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Rocket } from "lucide-react";
-import { LinkButton } from "@/components/Button";
+import { useRouter } from "next/navigation";
+import { Activity, ArrowRight, Rocket, Sparkles, TrendingUp } from "lucide-react";
+import { Button } from "@/components/Button";
 import { AnimatedText } from "@/components/AnimatedText";
 import { HeroAtmosphere } from "@/components/HeroAtmosphere";
+import { useTransition } from "@/components/TransitionProvider";
 import { hero } from "@/data/site";
 
 export function HeroSection() {
+  const router = useRouter();
+  const transition = useTransition();
+  const launchOnboarding = () => {
+    transition.show("Initializing Uplink", "Establishing a secure channel to the intelligence engine");
+    router.push("/onboarding");
+  };
   return (
     <section data-nav-section="hero" className="relative flex min-h-[calc(100vh-5rem)] items-center justify-center overflow-hidden px-5 py-20 md:px-8 lg:py-24">
       <div className="pointer-events-none absolute inset-0">
         <HeroAtmosphere />
         <motion.div
-          className="absolute left-[-8%] top-[8%] h-[26rem] w-[26rem] rounded-full bg-primary-container/16 blur-[120px]"
-          animate={{ x: [0, 26, 0], y: [0, -18, 0], opacity: [0.45, 0.7, 0.45] }}
+          className="absolute left-[-8%] top-[8%] h-[26rem] w-[26rem] rounded-full bg-primary-container/8 blur-[140px]"
+          animate={{ x: [0, 26, 0], y: [0, -18, 0], opacity: [0.28, 0.5, 0.28] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute right-[-2%] top-[18%] h-[24rem] w-[24rem] rounded-full bg-secondary/10 blur-[120px]"
-          animate={{ x: [0, -22, 0], y: [0, 20, 0], opacity: [0.35, 0.6, 0.35] }}
+          className="absolute right-[-2%] top-[18%] h-[24rem] w-[24rem] rounded-full bg-secondary/6 blur-[140px]"
+          animate={{ x: [0, -22, 0], y: [0, 20, 0], opacity: [0.22, 0.42, 0.22] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-[-10%] left-[28%] h-[28rem] w-[28rem] rounded-full bg-tertiary-container/16 blur-[140px]"
-          animate={{ x: [0, 14, 0], y: [0, -24, 0], opacity: [0.3, 0.55, 0.3] }}
+          className="absolute bottom-[-10%] left-[28%] h-[28rem] w-[28rem] rounded-full bg-tertiary-container/8 blur-[160px]"
+          animate={{ x: [0, 14, 0], y: [0, -24, 0], opacity: [0.18, 0.38, 0.18] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="noise-overlay" />
+        <div className="noise-overlay opacity-50" />
       </div>
+
+      <motion.div
+        className="pointer-events-none absolute left-[6%] top-[24%] z-10 hidden lg:block"
+        initial={{ opacity: 0, y: 30, x: -20 }}
+        animate={{ opacity: 1, y: [0, -10, 0], x: 0 }}
+        transition={{
+          opacity: { duration: 1, delay: 0.9 },
+          x: { duration: 1, delay: 0.9 },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }
+        }}
+      >
+        <div className="glass-panel glass-shimmer flex items-center gap-3 rounded-2xl px-4 py-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-tertiary-container/40 to-transparent text-tertiary">
+            <TrendingUp className="h-4 w-4" />
+          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-headline text-[0.62rem] uppercase tracking-[0.18em] text-on-surface-variant">Pipeline</span>
+            <span className="font-headline text-sm font-semibold text-white">+24.6% MRR</span>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="pointer-events-none absolute right-[7%] top-[30%] z-10 hidden lg:block"
+        initial={{ opacity: 0, y: 30, x: 20 }}
+        animate={{ opacity: 1, y: [0, 10, 0], x: 0 }}
+        transition={{
+          opacity: { duration: 1, delay: 1.1 },
+          x: { duration: 1, delay: 1.1 },
+          y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 }
+        }}
+      >
+        <div className="glass-panel glass-shimmer flex items-center gap-3 rounded-2xl px-4 py-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-secondary/30 to-transparent text-secondary">
+            <Activity className="h-4 w-4" />
+          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-headline text-[0.62rem] uppercase tracking-[0.18em] text-on-surface-variant">Lead Score</span>
+            <span className="font-headline text-sm font-semibold text-white">92 / 100</span>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="pointer-events-none absolute bottom-[18%] right-[14%] z-10 hidden lg:block"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: [0, -8, 0] }}
+        transition={{
+          opacity: { duration: 1, delay: 1.3 },
+          y: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.4 }
+        }}
+      >
+        <div className="glass-panel glass-shimmer flex items-center gap-3 rounded-2xl px-4 py-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-container/40 to-transparent text-primary">
+            <Sparkles className="h-4 w-4" />
+          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-headline text-[0.62rem] uppercase tracking-[0.18em] text-on-surface-variant">Signal</span>
+            <span className="font-headline text-sm font-semibold text-white">Bullish · 0.87</span>
+          </div>
+        </div>
+      </motion.div>
 
       <motion.div
         className="relative z-10 mx-auto w-full max-w-7xl"
@@ -88,10 +158,10 @@ export function HeroSection() {
               }}
               transition={{ duration: 0.72, ease: [0.2, 0.9, 0.2, 1] }}
             >
-              <LinkButton href="/onboarding">
+              <Button onClick={launchOnboarding}>
                 {hero.primaryCta}
                 <Rocket size={16} />
-              </LinkButton>
+              </Button>
             </motion.div>
             <motion.div
               variants={{

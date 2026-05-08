@@ -1,3 +1,4 @@
+import { FloatingDemoCTA } from "@/components/FloatingDemoCTA";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/HeroSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
@@ -18,6 +19,7 @@ export default function HomePage() {
         <SolutionsSection />
       </main>
       <Footer />
+      <FloatingDemoCTA />
     </>
   );
 }

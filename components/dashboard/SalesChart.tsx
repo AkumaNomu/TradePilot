@@ -1,4 +1,8 @@
-﻿const monthlySeries = [56, 64, 58, 74, 82, 77, 88, 79, 92, 85, 96, 90];
+"use client";
+
+import { motion } from "framer-motion";
+
+const monthlySeries = [56, 64, 58, 74, 82, 77, 88, 79, 92, 85, 96, 90];
 
 export default function SalesChart() {
   return (
@@ -7,10 +11,15 @@ export default function SalesChart() {
       <p className="panel-sub">12-month export pipeline performance</p>
       <div className="bars">
         {monthlySeries.map((point, index) => (
-          <div key={index} className="bar" style={{ height: `${point}%` }} />
+          <motion.div
+            key={index}
+            className="bar"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: `${point}%`, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.15 + index * 0.05, ease: [0.2, 0.9, 0.2, 1] }}
+          />
         ))}
       </div>
     </section>
   );
 }
-

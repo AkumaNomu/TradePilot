@@ -1,10 +1,17 @@
-﻿import KPIGrid from "@/components/dashboard/KPIGrid";
+import KPIGrid from "@/components/dashboard/KPIGrid";
 import SalesChart from "@/components/dashboard/SalesChart";
 import MarketChart from "@/components/dashboard/MarketChart";
+import PageHeader from "@/components/dashboard/PageHeader";
 
 export default function DashboardPage() {
   return (
     <>
+      <PageHeader
+        eyebrow="Overview · Live"
+        title="Welcome back."
+        accent="Your signals are warm."
+        description="A live read on every lead, market, and forecast feeding into your TradePilot workspace."
+      />
 
       <KPIGrid />
 
@@ -26,4 +33,3 @@ export default function DashboardPage() {
     </>
   );
 }
-
