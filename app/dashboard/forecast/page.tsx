@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { AlertTriangle, BrainCircuit, Sparkles, TrendingUp } from "lucide-react";
 import PageHeader from "@/components/dashboard/PageHeader";
 import AreaChart from "@/components/dashboard/AreaChart";
+import { LiquidGlass } from "@/components/LiquidGlass";
 
 const forecast = [62, 64, 70, 72, 78, 84, 88, 96, 100, 108, 116, 124];
 const upper = forecast.map((v) => v + 14);
@@ -132,36 +133,39 @@ export default function ForecastPage() {
           {scenarios.map((s, i) => (
             <motion.article
               key={s.name}
-              className="dash-card"
+              className="dash-card relative overflow-hidden"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 + i * 0.07 }}
             >
-              <div className="flex items-start justify-between gap-2">
-                <div>
-                  <div className="cell-mono" style={{ color: "#c2c6d6" }}>{s.name}</div>
-                  <div
-                    className="mt-1 font-headline font-bold tracking-tight text-white"
-                    style={{ fontSize: "1.85rem", letterSpacing: "-0.02em" }}
-                  >
-                    {s.pipeline}
+              <LiquidGlass variant="blob" intensity="light" className="top-0 right-0 w-32 h-32" />
+              <div className="relative z-10">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <div className="cell-mono" style={{ color: "#c2c6d6" }}>{s.name}</div>
+                    <div
+                      className="mt-1 font-headline font-bold tracking-tight text-white"
+                      style={{ fontSize: "1.85rem", letterSpacing: "-0.02em" }}
+                    >
+                      {s.pipeline}
+                    </div>
                   </div>
+                  <span className={`chip ${s.tone}`}>{s.delta}</span>
                 </div>
-                <span className={`chip ${s.tone}`}>{s.delta}</span>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{s.desc}</p>
-              <div className="mt-4">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="cell-mono">Confidence</span>
-                  <span className="cell-mono" style={{ color: "#fff" }}>{s.confidence}%</span>
-                </div>
-                <div className="score-bar mt-2" style={{ width: "100%" }}>
-                  <motion.div
-                    className="score-bar-fill"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${s.confidence}%` }}
-                    transition={{ duration: 1, delay: 0.3 + i * 0.05 }}
-                  />
+                <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{s.desc}</p>
+                <div className="mt-4">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="cell-mono">Confidence</span>
+                    <span className="cell-mono" style={{ color: "#fff" }}>{s.confidence}%</span>
+                  </div>
+                  <div className="score-bar mt-2" style={{ width: "100%" }}>
+                    <motion.div
+                      className="score-bar-fill"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${s.confidence}%` }}
+                      transition={{ duration: 1, delay: 0.3 + i * 0.05 }}
+                    />
+                  </div>
                 </div>
               </div>
             </motion.article>

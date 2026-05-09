@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Zap } from "lucide-react";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { LiquidGlass } from "@/components/LiquidGlass";
 
 const easeOut = [0.2, 0.9, 0.2, 1] as const;
 
@@ -128,6 +129,7 @@ export function HeroPreview() {
         className="glass-panel shimmer-bg relative overflow-hidden rounded-2xl p-3 md:p-4"
         style={{ boxShadow: "0 50px 130px -22px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.08)" }}
       >
+        <LiquidGlass variant="glow" intensity="light" className="top-10 right-10 w-40 h-40" />
         <div className="relative z-10 flex items-center justify-between gap-3 border-b border-white/[0.07] px-3 pb-3">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
@@ -187,18 +189,21 @@ export function HeroPreview() {
                 whileHover={{ y: -3, borderColor: "rgba(255,255,255,0.16)", scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.6, ease: easeOut, delay: 1.0 + i * 0.1 }}
-                className="rounded-xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-md cursor-pointer"
+                className="relative rounded-xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-md cursor-pointer overflow-hidden"
               >
-                <p className="font-body text-[0.74rem] font-medium tracking-wide text-on-surface-variant">{k.label}</p>
-                <p className="mt-1.5 font-headline text-2xl font-bold tracking-tight text-white tabular-nums">
-                  <AnimatedCounter
-                    value={k.value}
-                    prefix={k.prefix}
-                    suffix={k.suffix}
-                    decimals={k.decimals}
-                  />
-                </p>
-                <p className="mt-1 font-body text-[0.72rem] font-semibold tracking-wide text-tertiary">▲ {k.delta}</p>
+                <LiquidGlass variant="blob" intensity="light" className="top-0 right-0 w-24 h-24" />
+                <div className="relative z-10">
+                  <p className="font-body text-[0.74rem] font-medium tracking-wide text-on-surface-variant">{k.label}</p>
+                  <p className="mt-1.5 font-headline text-2xl font-bold tracking-tight text-white tabular-nums">
+                    <AnimatedCounter
+                      value={k.value}
+                      prefix={k.prefix}
+                      suffix={k.suffix}
+                      decimals={k.decimals}
+                    />
+                  </p>
+                  <p className="mt-1 font-body text-[0.72rem] font-semibold tracking-wide text-tertiary">▲ {k.delta}</p>
+                </div>
               </motion.div>
             ))}
           </div>
