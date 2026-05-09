@@ -26,7 +26,7 @@ const scenarios = [
   {
     name: "Base case",
     desc: "Current run-rate continues, no major macro shifts.",
-    pipeline: "DA8.42M",
+    pipeline: "DZD 8,420,000",
     confidence: 91,
     delta: "+12.8%",
     tone: "cyan"
@@ -34,7 +34,7 @@ const scenarios = [
   {
     name: "Bull case",
     desc: "MENA expansion lands; conversion rate +3pts.",
-    pipeline: "DA10.6M",
+    pipeline: "DZD 10,600,000",
     confidence: 64,
     delta: "+41.2%",
     tone: "up"
@@ -42,7 +42,7 @@ const scenarios = [
   {
     name: "Bear case",
     desc: "Top 5 accounts slip a quarter; FX headwinds.",
-    pipeline: "DA6.1M",
+    pipeline: "DZD 6,100,000",
     confidence: 18,
     delta: "-18.4%",
     tone: "down"

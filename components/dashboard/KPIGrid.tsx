@@ -5,7 +5,7 @@ import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const kpis = [
-  { label: "Pipeline value", value: 8.42, prefix: "DA", suffix: "M", decimals: 2, delta: "+12.8%", trend: "up", series: [22, 28, 34, 30, 42, 48, 56, 62, 70] },
+  { label: "Pipeline value", value: 8420000, prefix: "DZD ", suffix: "", decimals: 0, delta: "+12.8%", trend: "up", series: [22, 28, 34, 30, 42, 48, 56, 62, 70] },
   { label: "Scored accounts", value: 1462, prefix: "", suffix: "", decimals: 0, delta: "+7.4%", trend: "up", series: [40, 38, 44, 49, 51, 56, 62, 64, 68] },
   { label: "Conversion rate", value: 18.9, prefix: "", suffix: "%", decimals: 1, delta: "+2.1%", trend: "up", series: [12, 14, 13, 16, 17, 17, 18, 18, 19] },
   { label: "Churn risk", value: 4.7, prefix: "", suffix: "%", decimals: 1, delta: "-0.9%", trend: "down", series: [12, 11, 10, 9, 8, 8, 7, 6, 5] }

@@ -5,15 +5,15 @@ import { ArrowUpRight, Filter, Target, Zap } from "lucide-react";
 import PageHeader from "@/components/dashboard/PageHeader";
 
 const accounts = [
-  { name: "Helios Energy", segment: "Energy", region: "MENA", score: 94, intent: "Surging", value: "DA480K", lastTouch: "Today", action: "Schedule demo" },
-  { name: "Concordia Foods", segment: "Agri", region: "Europe", score: 88, intent: "Active", value: "DA312K", lastTouch: "1d", action: "Send proposal" },
-  { name: "Northwind Tech", segment: "SaaS", region: "Americas", score: 84, intent: "Active", value: "DA268K", lastTouch: "2d", action: "Intro champion" },
-  { name: "Atlas Logistics", segment: "Logistics", region: "Europe", score: 81, intent: "Engaged", value: "DA240K", lastTouch: "3d", action: "Pricing call" },
-  { name: "Saharan Mining", segment: "Resources", region: "MENA", score: 76, intent: "Engaged", value: "DA198K", lastTouch: "5d", action: "Re-engage" },
-  { name: "Riviera Pharma", segment: "Biotech", region: "Europe", score: 72, intent: "Warm", value: "DA172K", lastTouch: "1w", action: "Nurture" },
-  { name: "Cedar Components", segment: "Manufacturing", region: "Americas", score: 68, intent: "Warm", value: "DA142K", lastTouch: "1w", action: "Nurture" },
-  { name: "Arctic Telecom", segment: "Telecom", region: "Europe", score: 64, intent: "Cool", value: "DA118K", lastTouch: "2w", action: "Educational" },
-  { name: "Verde Logistics", segment: "Logistics", region: "Americas", score: 58, intent: "Cool", value: "DA96K", lastTouch: "3w", action: "Pause" }
+  { name: "Helios Energy", segment: "Energy", region: "MENA", score: 94, intent: "Surging", value: "DZD 480,000", lastTouch: "Today", action: "Schedule demo" },
+  { name: "Concordia Foods", segment: "Agri", region: "Europe", score: 88, intent: "Active", value: "DZD 312,000", lastTouch: "1d", action: "Send proposal" },
+  { name: "Northwind Tech", segment: "SaaS", region: "Americas", score: 84, intent: "Active", value: "DZD 268,000", lastTouch: "2d", action: "Intro champion" },
+  { name: "Atlas Logistics", segment: "Logistics", region: "Europe", score: 81, intent: "Engaged", value: "DZD 240,000", lastTouch: "3d", action: "Pricing call" },
+  { name: "Saharan Mining", segment: "Resources", region: "MENA", score: 76, intent: "Engaged", value: "DZD 198,000", lastTouch: "5d", action: "Re-engage" },
+  { name: "Riviera Pharma", segment: "Biotech", region: "Europe", score: 72, intent: "Warm", value: "DZD 172,000", lastTouch: "1w", action: "Nurture" },
+  { name: "Cedar Components", segment: "Manufacturing", region: "Americas", score: 68, intent: "Warm", value: "DZD 142,000", lastTouch: "1w", action: "Nurture" },
+  { name: "Arctic Telecom", segment: "Telecom", region: "Europe", score: 64, intent: "Cool", value: "DZD 118,000", lastTouch: "2w", action: "Educational" },
+  { name: "Verde Logistics", segment: "Logistics", region: "Americas", score: 58, intent: "Cool", value: "DZD 96,000", lastTouch: "3w", action: "Pause" }
 ];
 
 const distributionBuckets = [

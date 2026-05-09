@@ -23,7 +23,7 @@ export function HeroSection() {
   return (
     <section
       data-nav-section="hero"
-      className="relative flex min-h-[calc(100vh-5rem)] flex-col items-center overflow-hidden px-5 pb-12 pt-28 md:px-8 md:pt-32"
+      className="relative flex min-h-[calc(100vh-5rem)] flex-col items-center px-5 pb-12 pt-28 md:px-8 md:pt-32"
     >
       <MouseFollower />
       <FloatingFx variant="hero" />

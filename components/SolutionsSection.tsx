@@ -40,7 +40,7 @@ export function SolutionsSection() {
         </MotionItem>
 
         <MotionItem>
-          <div className="glass-panel relative overflow-hidden rounded-[2rem] p-5 md:p-8">
+          <div className="glass-panel relative overflow-hidden rounded-[2rem] p-5 md:p-8 flex flex-col h-full">
             <MotionStagger className="grid gap-4 sm:grid-cols-2" staggerChildren={0.06}>
               {solutionTags.map((tag, idx) => {
                 const Icon = tag.icon;

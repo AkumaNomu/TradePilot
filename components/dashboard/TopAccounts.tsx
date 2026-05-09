@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const rows = [
-  { name: "Helios Energy", region: "MENA", segment: "Energy", score: 94, value: "DA480K", trend: "up" },
-  { name: "Concordia Foods", region: "Europe", segment: "Agri", score: 88, value: "DA312K", trend: "up" },
-  { name: "Northwind Tech", region: "Americas", segment: "SaaS", score: 84, value: "DA268K", trend: "up" },
-  { name: "Atlas Logistics", region: "Europe", segment: "Logistics", score: 81, value: "DA240K", trend: "up" },
-  { name: "Saharan Mining", region: "MENA", segment: "Resources", score: 76, value: "DA198K", trend: "flat" },
-  { name: "Riviera Pharma", region: "Europe", segment: "Biotech", score: 72, value: "DA172K", trend: "up" }
+  { name: "Helios Energy", region: "MENA", segment: "Energy", score: 94, value: "DZD 480,000", trend: "up" },
+  { name: "Concordia Foods", region: "Europe", segment: "Agri", score: 88, value: "DZD 312,000", trend: "up" },
+  { name: "Northwind Tech", region: "Americas", segment: "SaaS", score: 84, value: "DZD 268,000", trend: "up" },
+  { name: "Atlas Logistics", region: "Europe", segment: "Logistics", score: 81, value: "DZD 240,000", trend: "up" },
+  { name: "Saharan Mining", region: "MENA", segment: "Resources", score: 76, value: "DZD 198,000", trend: "flat" },
+  { name: "Riviera Pharma", region: "Europe", segment: "Biotech", score: 72, value: "DZD 172,000", trend: "up" }
 ];
 
 export default function TopAccounts() {

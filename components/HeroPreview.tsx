@@ -158,7 +158,7 @@ export function HeroPreview() {
                   Pipeline Momentum
                 </p>
                 <p className="mt-2 font-headline text-3xl font-bold tracking-tight text-white tabular-nums">
-                  <AnimatedCounter value={8.42} prefix="DA" suffix="M" decimals={2} />
+                  <AnimatedCounter value={8420000} prefix="DZD " suffix="" decimals={0} />
                 </p>
               </div>
               <span className="inline-flex items-center gap-1 rounded-full border border-tertiary/30 bg-tertiary/10 px-2.5 py-1 font-body text-[0.7rem] font-semibold tracking-wide text-tertiary">

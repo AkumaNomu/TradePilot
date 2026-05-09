@@ -19,6 +19,7 @@ import {
 
 import { useTransition } from "@/components/TransitionProvider";
 import { FloatingFx } from "@/components/FloatingFx";
+import { Logo } from "@/components/Logo";
 
 type Step = 1 | 2 | 3;
 
@@ -218,8 +219,7 @@ export default function OnboardingFlow() {
             <span className="absolute inset-0 animate-ping rounded-full bg-secondary/50" />
             <span className="relative h-2.5 w-2.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(76,215,246,0.85)]" />
           </span>
-          <BarChart3 className="h-4 w-4 text-white" />
-          <span className="font-headline text-sm font-extrabold uppercase tracking-[0.2em] text-white">TradePilot</span>
+          <Logo variant="minimal" />
         </div>
         <span className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.025] px-3 py-1 backdrop-blur-md">
           <span className="font-body text-[0.74rem] font-semibold tracking-wide text-secondary">Step {step}</span>

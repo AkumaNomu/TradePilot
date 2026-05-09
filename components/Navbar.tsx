@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import { navLinks } from "@/data/site";
 import { useTransition } from "@/components/TransitionProvider";
+import { Logo } from "@/components/Logo";
 
 export function Navbar() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -53,7 +54,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-full w-full max-w-7xl items-center px-4 md:px-8">
         <a href="#" className="flex items-center gap-2.5 text-white">
-          <span className="font-headline text-[0.95rem] font-extrabold uppercase tracking-[0.18em]">TradePilot</span>
+          <Logo />
         </a>
 
         <div className="relative hidden flex-1 items-center justify-center gap-1 md:flex">
