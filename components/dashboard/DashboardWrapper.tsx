@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Sidebar from "@/components/dashboard/Sidebar";
 import DashboardAmbient from "@/components/dashboard/DashboardAmbient";
 import HideTransition from "@/components/dashboard/HideTransition";
+import { LiquidGlass } from "@/components/LiquidGlass";
 
 type SidebarContextType = {
   isOpen: boolean;
@@ -34,6 +35,10 @@ export function DashboardWrapper({ children }: { children: ReactNode }) {
       <div className="app">
         <HideTransition />
         <DashboardAmbient />
+
+        {/* Liquid glass background accents */}
+        <LiquidGlass variant="blob" intensity="light" className="fixed top-20 left-1/4 w-96 h-96 pointer-events-none z-0" />
+        <LiquidGlass variant="glow" intensity="light" className="fixed bottom-32 right-20 w-80 h-80 pointer-events-none z-0" />
 
         {/* Animated Sidebar */}
         <motion.div

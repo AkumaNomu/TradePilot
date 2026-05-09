@@ -174,15 +174,16 @@ export default function ForecastPage() {
       </section>
 
       <div className="g21">
-        <section className="dash-card">
-          <div className="panel-head">
+        <section className="dash-card relative overflow-hidden">
+          <LiquidGlass variant="wave" intensity="light" className="absolute top-0 left-0 w-full h-32" />
+          <div className="panel-head relative z-10">
             <div>
               <h3 className="section-title">Forecast drivers</h3>
               <p className="section-sub">Top model features influencing this period</p>
             </div>
             <Sparkles size={14} className="text-secondary" />
           </div>
-          <div className="mt-4 grid gap-2.5">
+          <div className="mt-4 grid gap-2.5 relative z-10">
             {[
               { f: "Pipeline coverage", w: 0.92 },
               { f: "Stage-2 velocity", w: 0.78 },
@@ -212,8 +213,9 @@ export default function ForecastPage() {
           </div>
         </section>
 
-        <section className="dash-card">
-          <div className="panel-head">
+        <section className="dash-card relative overflow-hidden">
+          <LiquidGlass variant="glow" intensity="light" className="top-1/2 right-0 w-48 h-48" />
+          <div className="panel-head relative z-10">
             <div>
               <h3 className="section-title">Risk signals</h3>
               <p className="section-sub">Accounts trending below baseline</p>
@@ -222,7 +224,7 @@ export default function ForecastPage() {
               <AlertTriangle size={11} style={{ marginRight: 4 }} /> 4 active
             </span>
           </div>
-          <div style={{ display: "grid", gap: "0.55rem", marginTop: "0.95rem" }}>
+          <div style={{ display: "grid", gap: "0.55rem", marginTop: "0.95rem" }} className="relative z-10">
             {risks.map((r, i) => (
               <motion.div
                 key={r.account}
