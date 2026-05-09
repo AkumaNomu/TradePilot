@@ -79,19 +79,25 @@ export default function KPIGrid() {
               show: { opacity: 1, y: 0, filter: "blur(0px)" }
             }}
             transition={{ duration: 0.55, ease: [0.2, 0.9, 0.2, 1] }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
           >
             <div className="kpi-label">
               <span className="kpi-spark" />
               {item.label}
             </div>
-            <div className="kpi-val tabular-nums">
+            <motion.div
+              className="kpi-val tabular-nums bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
               <AnimatedCounter
                 value={item.value}
                 prefix={item.prefix}
                 suffix={item.suffix}
                 decimals={item.decimals}
               />
-            </div>
+            </motion.div>
             <div className="mt-2 flex items-end justify-between gap-3">
               <div className={`kpi-delta ${item.trend === "up" ? "up" : "down"}`}>
                 <Icon size={12} />

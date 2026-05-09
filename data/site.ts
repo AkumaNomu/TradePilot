@@ -23,10 +23,10 @@ export const navLinks = [
 ];
 
 export const hero = {
-  eyebrow: "AI-Powered Sales Intelligence",
+  eyebrow: "",
   title: "Your AI Co-Pilot for Sales Growth",
   subtitle:
-    "Identify, score, and convert your best clients through a unified AI-powered platform built for revenue teams that need clarity, speed, and measurable pipeline lift.",
+    "Identify, score, and convert your best clients through a unified AI-powered platform built for revenue teams in Algeria and North Africa.",
   primaryCta: "View Demo",
   secondaryCta: "Explore Platform",
   stats: [

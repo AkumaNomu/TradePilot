@@ -8,9 +8,9 @@ import { MotionItem, MotionStagger } from "@/components/MotionPrimitives";
 export function SolutionsSection() {
   return (
     <section id="solutions" data-nav-section="solutions" className="px-5 py-section-gap md:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
         <MotionItem>
-          <div className="glass-panel relative overflow-hidden rounded-[2rem] p-7 md:p-9">
+          <div className="glass-panel relative overflow-hidden rounded-[2rem] p-7 md:p-9 flex flex-col h-full">
             <motion.div
               className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-secondary/12 blur-3xl"
               animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
@@ -26,7 +26,7 @@ export function SolutionsSection() {
                 <span className="dot" />
                 <span>Custom AI Systems</span>
               </div>
-              <h2 className="mt-6 font-headline text-headline-xl text-white">
+              <h2 className="mt-6 font-headline text-headline-xl text-white flex-1 flex items-start">
                 Build your own AI solution around your sales motion.
               </h2>
               <p className="mt-6 font-body text-body-lg leading-relaxed text-on-surface-variant">

@@ -8,7 +8,7 @@ import { useTransition } from "@/components/TransitionProvider";
 import { hero } from "@/data/site";
 import { HeroPreview } from "@/components/HeroPreview";
 import { FloatingFx } from "@/components/FloatingFx";
-import { NetworkBackdrop } from "@/components/NetworkBackdrop";
+import { MouseFollower } from "@/components/MouseFollower";
 
 const easeOut = [0.2, 0.9, 0.2, 1] as const;
 
@@ -25,10 +25,8 @@ export function HeroSection() {
       data-nav-section="hero"
       className="relative flex min-h-[calc(100vh-5rem)] flex-col items-center overflow-hidden px-5 pb-12 pt-28 md:px-8 md:pt-32"
     >
+      <MouseFollower />
       <FloatingFx variant="hero" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.55]">
-        <NetworkBackdrop density={26} />
-      </div>
 
       <motion.div
         className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center"
@@ -36,21 +34,23 @@ export function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.95, ease: easeOut }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: easeOut, delay: 0.05 }}
-          className="mb-9 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 backdrop-blur-md"
-        >
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inset-0 animate-ping rounded-full bg-secondary/60" />
-            <span className="relative h-1.5 w-1.5 rounded-full bg-secondary" />
-          </span>
-          <Sparkles size={11} className="text-secondary" />
-          <span className="font-body text-[0.74rem] font-semibold tracking-wide text-on-surface-variant">
-            {hero.eyebrow}
-          </span>
-        </motion.div>
+        {hero.eyebrow && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: easeOut, delay: 0.05 }}
+            className="mb-9 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 backdrop-blur-md"
+          >
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inset-0 animate-ping rounded-full bg-secondary/60" />
+              <span className="relative h-1.5 w-1.5 rounded-full bg-secondary" />
+            </span>
+            <Sparkles size={11} className="text-secondary" />
+            <span className="font-body text-[0.74rem] font-semibold tracking-wide text-on-surface-variant">
+              {hero.eyebrow}
+            </span>
+          </motion.div>
+        )}
 
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
@@ -104,15 +104,32 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: easeOut, delay: 0.6 }}
           className="mt-10 grid grid-cols-3 gap-x-8 gap-y-1 text-center sm:gap-x-14"
         >
-          {hero.stats.map((s) => (
-            <div key={s.label} className="flex flex-col items-center">
-              <span className="font-headline text-2xl font-bold tracking-tight text-white sm:text-3xl">
+          {hero.stats.map((s, idx) => (
+            <motion.div
+              key={s.label}
+              className="flex flex-col items-center"
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              <motion.span
+                className="font-headline text-2xl font-bold tracking-tight text-white sm:text-3xl bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  ease: easeOut,
+                  delay: 0.7 + idx * 0.1,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20
+                }}
+              >
                 {s.value}
-              </span>
+              </motion.span>
               <span className="mt-1.5 font-body text-[0.78rem] font-medium text-on-surface-variant/80">
                 {s.label}
               </span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 

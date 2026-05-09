@@ -51,16 +51,12 @@ export function Navbar() {
           : "border-transparent bg-slate-950/30 backdrop-blur-md"
       }`}
     >
-      <nav className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 md:px-8">
+      <nav className="mx-auto flex h-full w-full max-w-7xl items-center px-4 md:px-8">
         <a href="#" className="flex items-center gap-2.5 text-white">
-          <span className="relative flex h-3 w-3 items-center justify-center">
-            <span className="absolute inset-0 animate-ping rounded-full bg-secondary/50" />
-            <span className="relative h-3 w-3 rounded-full bg-secondary shadow-[0_0_10px_rgba(76,215,246,0.85)]" />
-          </span>
           <span className="font-headline text-[0.95rem] font-extrabold uppercase tracking-[0.18em]">TradePilot</span>
         </a>
 
-        <div className="relative hidden items-center gap-1 md:flex">
+        <div className="relative hidden flex-1 items-center justify-center gap-1 md:flex">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.slice(1);
             return (
@@ -84,7 +80,7 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-3">
           <button
             onClick={launch}
             className="hidden font-body text-[0.9rem] font-medium tracking-tight text-slate-300 transition hover:text-white md:inline-flex"
