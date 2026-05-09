@@ -23,7 +23,7 @@ export const navLinks = [
 ];
 
 export const hero = {
-  eyebrow: "Live Optimization Engine v2.4",
+  eyebrow: "AI-Powered Sales Intelligence",
   title: "Your AI Co-Pilot for Sales Growth",
   subtitle:
     "Identify, score, and convert your best clients through a unified AI-powered platform built for revenue teams that need clarity, speed, and measurable pipeline lift.",

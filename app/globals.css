@@ -31,6 +31,14 @@ body {
   color: #dce1fb;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Enable text selection on content text */
+p, h1, h2, h3, h4, h5, h6, a, span, li, dd {
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 body::before {
@@ -242,6 +250,20 @@ body::before {
     animation: glint 3.5s ease-in-out infinite;
     pointer-events: none;
     border-radius: inherit;
+  }
+
+  .select-none {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .select-text {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
   }
 
   @media (prefers-reduced-motion: reduce) {

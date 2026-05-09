@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/SectionHeading";
 import { MotionItem, MotionStagger } from "@/components/MotionPrimitives";
 import { processSteps } from "@/data/site";
@@ -26,11 +27,37 @@ export function HowItWorksSection() {
 
             return (
               <MotionItem key={step.number}>
-                <article className="glass-panel lift-card group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] p-7">
-                  <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-secondary/10 blur-3xl transition group-hover:bg-secondary/25" />
-                  <div className="absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-tertiary/8 blur-3xl opacity-0 transition group-hover:opacity-100" />
+                <motion.article
+                  className="glass-panel group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] p-7"
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                >
+                  {/* Enhanced glow orbs */}
+                  <motion.div
+                    className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-secondary/10 blur-3xl transition-all"
+                    whileHover={{ scale: 1.4, opacity: 0.5 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  <motion.div
+                    className="absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-tertiary/8 blur-3xl opacity-0 transition-all group-hover:opacity-100"
+                    whileHover={{ scale: 1.35, opacity: 0.45 }}
+                    transition={{ duration: 0.4 }}
+                  />
+
+                  {/* Animated shimmer border overlay */}
+                  <div className="absolute inset-0 rounded-[1.6rem] opacity-0 transition-opacity group-hover:opacity-100">
+                    <div
+                      className="absolute inset-0 rounded-[1.6rem]"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, transparent 0%, rgba(76,215,246,0.15) 50%, transparent 100%)",
+                        animation: "shimmer-move 3s ease-in-out infinite"
+                      }}
+                    />
+                  </div>
+
                   <div className="relative mb-7 flex items-center justify-between">
-                    <p
+                    <motion.p
                       className="font-headline text-6xl font-extrabold tracking-tighter"
                       style={{
                         background:
@@ -39,12 +66,22 @@ export function HowItWorksSection() {
                         backgroundClip: "text",
                         color: "transparent"
                       }}
+                      whileHover={{ scale: 1.08 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     >
                       {step.number}
-                    </p>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 text-secondary shadow-cyan-glow transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+                    </motion.p>
+                    <motion.div
+                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 text-secondary shadow-cyan-glow"
+                      whileHover={{
+                        rotate: 12,
+                        scale: 1.15,
+                        boxShadow: "0 0 24px rgba(76,215,246,0.6), inset 0 0 12px rgba(76,215,246,0.2)"
+                      }}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    >
                       <Icon size={22} />
-                    </div>
+                    </motion.div>
                   </div>
                   <h3 className="relative font-headline text-2xl font-bold tracking-tight text-white">
                     {step.title}
@@ -52,7 +89,7 @@ export function HowItWorksSection() {
                   <p className="relative mt-3 font-body text-[0.94rem] leading-relaxed text-on-surface-variant">
                     {step.description}
                   </p>
-                </article>
+                </motion.article>
               </MotionItem>
             );
           })}

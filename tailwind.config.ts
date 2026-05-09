@@ -99,6 +99,10 @@ const config: Config = {
         glint: {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(200%)" }
+        },
+        shimmerMove: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" }
         }
       },
       animation: {
@@ -107,7 +111,8 @@ const config: Config = {
         "gradient-shift": "gradientShift 8s ease infinite",
         marquee: "marquee 40s linear infinite",
         "ring-pulse": "ringPulse 2.4s cubic-bezier(0,0,0.2,1) infinite",
-        glint: "glint 3.5s ease-in-out infinite"
+        glint: "glint 3.5s ease-in-out infinite",
+        "shimmer-move": "shimmerMove 3s ease-in-out infinite"
       }
     }
   },

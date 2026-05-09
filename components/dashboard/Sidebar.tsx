@@ -47,13 +47,6 @@ export default function Sidebar() {
           </Link>
         ))}
       </nav>
-
-      <div className="s-footer">
-        <div className="s-footer-txt">
-          <div className="s-footer-eyebrow">v1.0</div>
-          <div>Algeria Export Intelligence</div>
-        </div>
-      </div>
     </aside>
   );
 }

@@ -8,7 +8,6 @@ import { useTransition } from "@/components/TransitionProvider";
 import { hero } from "@/data/site";
 import { HeroPreview } from "@/components/HeroPreview";
 import { FloatingFx } from "@/components/FloatingFx";
-import { LiveTicker } from "@/components/LiveTicker";
 import { NetworkBackdrop } from "@/components/NetworkBackdrop";
 
 const easeOut = [0.2, 0.9, 0.2, 1] as const;
@@ -118,15 +117,6 @@ export function HeroSection() {
         </motion.div>
 
         <HeroPreview />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.1 }}
-        className="relative z-10 mt-16 w-screen"
-      >
-        <LiveTicker />
       </motion.div>
     </section>
   );
