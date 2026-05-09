@@ -19,7 +19,7 @@ function Sparkline() {
   const min = Math.min(...sparkline);
   const range = max - min || 1;
   const w = 380;
-  const h = 110;
+  const h = 180;
   const stepX = w / (sparkline.length - 1);
   const points = sparkline.map((v, i) => {
     const x = i * stepX;

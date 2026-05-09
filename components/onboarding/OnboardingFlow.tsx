@@ -262,7 +262,7 @@ export default function OnboardingFlow() {
                   transition={stepTransition}
                   onSubmit={goToStepTwo}
                   id="onboarding-form-1"
-                  className="glass-panel mx-auto flex h-[180px] w-full max-w-md flex-col justify-center gap-3 rounded-md p-7"
+                  className="mx-auto w-full max-w-md"
                 >
                   <label
                     className="font-body text-label-sm uppercase text-on-surface-variant"
@@ -270,7 +270,7 @@ export default function OnboardingFlow() {
                   >
                     Full name
                   </label>
-                  <div className="group relative rounded-sm border border-white/10 bg-white/[0.02] transition-colors duration-200 focus-within:border-secondary/60">
+                  <div className="group relative mt-3 border-b border-white/20 transition-colors duration-200 focus-within:border-secondary">
                     <input
                       id="fullName"
                       name="fullName"
@@ -281,9 +281,8 @@ export default function OnboardingFlow() {
                       value={form.fullName}
                       onChange={(event) => setForm((prev) => ({ ...prev, fullName: event.target.value }))}
                       placeholder="Jane Doe"
-                      className="w-full rounded-sm border-none bg-transparent px-4 py-3 pr-11 font-body text-body-md text-white placeholder:text-outline focus:outline-none focus:ring-0"
+                      className="w-full border-none bg-transparent px-0 py-2 font-body text-2xl font-semibold text-white placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-0"
                     />
-                    <UserRound className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-on-surface-variant" />
                   </div>
                 </motion.form>
               ) : null}
@@ -298,7 +297,7 @@ export default function OnboardingFlow() {
                   transition={stepTransition}
                   onSubmit={goToStepThree}
                   id="onboarding-form-2"
-                  className="glass-panel mx-auto flex h-[180px] w-full max-w-md flex-col justify-center gap-3 rounded-md p-7"
+                  className="mx-auto w-full max-w-md"
                 >
                   <label
                     className="font-body text-label-sm uppercase text-on-surface-variant"
@@ -306,7 +305,7 @@ export default function OnboardingFlow() {
                   >
                     Work email
                   </label>
-                  <div className="group relative rounded-sm border border-white/10 bg-white/[0.02] transition-colors duration-200 focus-within:border-secondary/60">
+                  <div className="group relative mt-3 border-b border-white/20 transition-colors duration-200 focus-within:border-secondary">
                     <input
                       id="email"
                       name="email"
@@ -317,9 +316,8 @@ export default function OnboardingFlow() {
                       value={form.email}
                       onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
                       placeholder="jane@company.com"
-                      className="w-full rounded-sm border-none bg-transparent px-4 py-3 pr-11 font-body text-body-md text-white placeholder:text-outline focus:outline-none focus:ring-0"
+                      className="w-full border-none bg-transparent px-0 py-2 font-body text-2xl font-semibold text-white placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-0"
                     />
-                    <Mail className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-on-surface-variant" />
                   </div>
                 </motion.form>
               ) : null}
