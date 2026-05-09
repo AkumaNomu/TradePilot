@@ -146,8 +146,10 @@ export function HeroPreview() {
 
         <div className="relative z-10 grid grid-cols-1 gap-3 p-3 md:grid-cols-[1.6fr_1fr]">
           <motion.div
-            whileHover={{ y: -2 }}
-            className="relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.025] p-5 backdrop-blur-md"
+            whileHover={{ y: -4, borderColor: "rgba(255,255,255,0.16)" }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            className="relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.025] p-5 backdrop-blur-md cursor-pointer"
           >
             <div className="flex items-baseline justify-between">
               <div>
@@ -156,7 +158,7 @@ export function HeroPreview() {
                   Pipeline Momentum
                 </p>
                 <p className="mt-2 font-headline text-3xl font-bold tracking-tight text-white tabular-nums">
-                  <AnimatedCounter value={8.42} prefix="$" suffix="M" decimals={2} />
+                  <AnimatedCounter value={8.42} prefix="DA" suffix="M" decimals={2} />
                 </p>
               </div>
               <span className="inline-flex items-center gap-1 rounded-full border border-tertiary/30 bg-tertiary/10 px-2.5 py-1 font-body text-[0.7rem] font-semibold tracking-wide text-tertiary">
@@ -182,9 +184,10 @@ export function HeroPreview() {
                 key={k.label}
                 initial={{ opacity: 0, x: 18 }}
                 animate={{ opacity: 1, x: 0 }}
-                whileHover={{ y: -2, borderColor: "rgba(255,255,255,0.16)" }}
+                whileHover={{ y: -3, borderColor: "rgba(255,255,255,0.16)", scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.6, ease: easeOut, delay: 1.0 + i * 0.1 }}
-                className="rounded-xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-md"
+                className="rounded-xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-md cursor-pointer"
               >
                 <p className="font-body text-[0.74rem] font-medium tracking-wide text-on-surface-variant">{k.label}</p>
                 <p className="mt-1.5 font-headline text-2xl font-bold tracking-tight text-white tabular-nums">

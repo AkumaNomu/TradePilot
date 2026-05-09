@@ -35,7 +35,7 @@ export function DashboardWrapper({ children }: { children: ReactNode }) {
         <HideTransition />
         <DashboardAmbient />
 
-        {/* Animated Sidebar with Toggle Button */}
+        {/* Animated Sidebar */}
         <motion.div
           initial={false}
           animate={{
@@ -47,19 +47,38 @@ export function DashboardWrapper({ children }: { children: ReactNode }) {
         >
           <div className="relative flex h-full w-64 flex-col select-none">
             {/* Toggle Button Inside Sidebar */}
-            <motion.button
-              onClick={toggleSidebar}
-              className="absolute right-2 top-6 z-40 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.05] text-white transition hover:bg-white/[0.10] hover:border-white/20"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
-            >
-              {isOpen ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
-            </motion.button>
+            {isOpen && (
+              <motion.button
+                onClick={toggleSidebar}
+                className="absolute right-2 top-6 z-40 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.05] text-white transition hover:bg-white/[0.10] hover:border-white/20"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Close sidebar"
+              >
+                <ChevronLeft size={16} />
+              </motion.button>
+            )}
 
             <Sidebar />
           </div>
         </motion.div>
+
+        {/* Floating Toggle Button (Always Visible) */}
+        {!isOpen && (
+          <motion.button
+            onClick={toggleSidebar}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed left-4 top-6 z-50 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.05] text-white transition hover:bg-white/[0.10] hover:border-white/20"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Open sidebar"
+          >
+            <ChevronRight size={16} />
+          </motion.button>
+        )}
 
         {/* Main Content */}
         <main className="main flex-1">
