@@ -9,18 +9,24 @@ export function SolutionsSection() {
     <section id="solutions" data-nav-section="solutions" className="px-5 py-section-gap md:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <MotionItem>
-          <div className="glass-panel rounded-[2rem] p-6 md:p-8">
-            <p className="font-headline text-label-md uppercase tracking-[0.22em] text-secondary">
-              Custom AI Systems
-            </p>
-            <h2 className="mt-4 font-headline text-headline-lg text-white">
-              Build your own AI solution around your sales motion.
-            </h2>
-            <p className="mt-5 text-body-lg text-on-surface-variant">
-              Every business is different. TradePilot can be shaped around your industry, data, sales process, and internal workflows so the intelligence layer fits how your team already operates.
-            </p>
-            <div className="mt-8">
-              <Button>Design Workflow</Button>
+          <div className="glass-panel relative overflow-hidden rounded-[2rem] p-7 md:p-9">
+            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-secondary/10 blur-3xl" />
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(76,215,246,0.85)]" />
+                <span className="font-mono text-mono-sm uppercase tracking-[0.18em] text-secondary">
+                  Custom AI Systems
+                </span>
+              </div>
+              <h2 className="mt-6 font-headline text-headline-xl text-white">
+                Build your own AI solution around your sales motion.
+              </h2>
+              <p className="mt-6 font-body text-body-lg leading-relaxed text-on-surface-variant">
+                Every business is different. TradePilot can be shaped around your industry, data, sales process, and internal workflows so the intelligence layer fits how your team already operates.
+              </p>
+              <div className="mt-9">
+                <Button>Design Workflow</Button>
+              </div>
             </div>
           </div>
         </MotionItem>

@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Rocket } from "lucide-react";
+import { ArrowRight, Rocket, Sparkles } from "lucide-react";
 import { Button } from "@/components/Button";
 import { useTransition } from "@/components/TransitionProvider";
 import { hero } from "@/data/site";
 import { HeroPreview } from "@/components/HeroPreview";
+import { FloatingFx } from "@/components/FloatingFx";
+import { LiveTicker } from "@/components/LiveTicker";
 
 const easeOut = [0.2, 0.9, 0.2, 1] as const;
 
@@ -21,66 +23,61 @@ export function HeroSection() {
   return (
     <section
       data-nav-section="hero"
-      className="relative flex min-h-[calc(100vh-5rem)] items-center justify-center overflow-hidden px-5 py-24 md:px-8"
+      className="relative flex min-h-[calc(100vh-5rem)] flex-col items-center overflow-hidden px-5 pb-12 pt-28 md:px-8 md:pt-32"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          className="absolute left-1/2 top-[34%] h-[34rem] w-[34rem] -translate-x-1/2 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(76,215,246,0.16), rgba(77,142,255,0.06) 45%, transparent 72%)",
-            filter: "blur(40px)"
-          }}
-          animate={{ opacity: [0.55, 0.8, 0.55] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+      <FloatingFx variant="hero" />
 
       <motion.div
-        className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center"
-        initial={{ opacity: 0, y: 20 }}
+        className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center"
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: easeOut }}
+        transition={{ duration: 0.95, ease: easeOut }}
       >
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: easeOut, delay: 0.1 }}
-          className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 backdrop-blur-md"
+          transition={{ duration: 0.6, ease: easeOut, delay: 0.05 }}
+          className="mb-9 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 backdrop-blur-md"
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inset-0 animate-ping rounded-full bg-secondary/60" />
             <span className="relative h-1.5 w-1.5 rounded-full bg-secondary" />
           </span>
-          <span className="font-body text-label-md uppercase text-on-surface-variant">{hero.eyebrow}</span>
+          <Sparkles size={11} className="text-secondary" />
+          <span className="font-mono text-mono-sm uppercase tracking-[0.18em] text-on-surface-variant">
+            {hero.eyebrow}
+          </span>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: easeOut, delay: 0.18 }}
-          className="text-center font-headline text-headline-xl text-white"
+          transition={{ duration: 0.85, ease: easeOut, delay: 0.18 }}
+          className="text-center font-headline text-display-xl text-white"
         >
-          <span className="block">Your AI Co-Pilot for</span>
-          <span className="block bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text pb-2 text-transparent">
-            Sales Growth
+          <span className="block">Your AI Co-Pilot</span>
+          <span className="block">
+            for{" "}
+            <span className="gradient-text relative inline-block pb-2">
+              Sales Growth
+            </span>
           </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: easeOut, delay: 0.3 }}
-          className="mt-5 max-w-xl text-center font-body text-body-md text-on-surface-variant"
+          transition={{ duration: 0.75, ease: easeOut, delay: 0.32 }}
+          className="mt-7 max-w-2xl text-center font-body text-body-lg leading-relaxed text-on-surface-variant"
         >
-          Identify, score, and convert your best clients through a unified intelligence platform.
+          Identify, score, and convert your highest-value clients through a unified intelligence platform built for revenue teams that move fast.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: easeOut, delay: 0.42 }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          transition={{ duration: 0.7, ease: easeOut, delay: 0.45 }}
+          className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Button onClick={launchOnboarding}>
             {hero.primaryCta}
@@ -98,7 +95,34 @@ export function HeroSection() {
           </motion.a>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: easeOut, delay: 0.6 }}
+          className="mt-10 grid grid-cols-3 gap-x-8 gap-y-1 text-center sm:gap-x-14"
+        >
+          {hero.stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center">
+              <span className="font-headline text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                {s.value}
+              </span>
+              <span className="mt-1 font-mono text-mono-sm uppercase text-on-surface-variant/80">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+
         <HeroPreview />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.1 }}
+        className="relative z-10 mt-16 w-screen"
+      >
+        <LiveTicker />
       </motion.div>
     </section>
   );

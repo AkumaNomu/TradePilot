@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 import { useTransition } from "@/components/TransitionProvider";
+import { FloatingFx } from "@/components/FloatingFx";
 
 type Step = 1 | 2 | 3;
 
@@ -207,23 +208,21 @@ export default function OnboardingFlow() {
     <div className="relative z-10 flex h-[100dvh] flex-col overflow-hidden bg-background font-body text-body-md text-on-background selection:bg-primary-container selection:text-slate-950">
       <ProgressLine step={step} />
 
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div
-          className="absolute left-1/2 top-[42%] h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(76,215,246,0.10), rgba(77,142,255,0.05) 40%, transparent 70%)",
-            filter: "blur(40px)"
-          }}
-        />
+      <div className="absolute inset-0 -z-10">
+        <FloatingFx variant="onboarding" />
       </div>
 
       <header className="relative z-20 flex h-16 w-full shrink-0 items-center justify-between px-6 pt-1 md:px-10">
-        <div className="flex items-center gap-2 text-white">
-          <BarChart3 className="h-5 w-5 text-white" />
-          <span className="font-headline text-base font-bold tracking-tight text-white">TradePilot</span>
+        <div className="flex items-center gap-2.5 text-white">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inset-0 animate-ping rounded-full bg-secondary/50" />
+            <span className="relative h-2.5 w-2.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(76,215,246,0.85)]" />
+          </span>
+          <BarChart3 className="h-4 w-4 text-white" />
+          <span className="font-headline text-sm font-extrabold uppercase tracking-[0.22em] text-white">TradePilot</span>
         </div>
-        <span className="font-body text-label-md uppercase text-on-surface-variant">
-          {step} / 3
+        <span className="font-mono text-mono-sm uppercase tracking-[0.18em] text-on-surface-variant">
+          STEP {step} / 3
         </span>
       </header>
 
@@ -232,10 +231,10 @@ export default function OnboardingFlow() {
           <div className="mx-auto flex max-w-xl flex-col items-center gap-3 text-center">
             <motion.h1
               key={`title-${step}`}
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: easeOut }}
-              className="font-headline text-headline-xl text-white"
+              transition={{ duration: 0.5, ease: easeOut }}
+              className="font-headline text-display-lg text-white"
             >
               {copy.title}
             </motion.h1>
@@ -243,8 +242,8 @@ export default function OnboardingFlow() {
               key={`sub-${step}`}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: easeOut, delay: 0.08 }}
-              className="max-w-md font-body text-body-md text-on-surface-variant"
+              transition={{ duration: 0.5, ease: easeOut, delay: 0.08 }}
+              className="max-w-lg font-body text-body-lg leading-relaxed text-on-surface-variant"
             >
               {copy.subtitle}
             </motion.p>

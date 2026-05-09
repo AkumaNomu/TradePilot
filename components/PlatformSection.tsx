@@ -23,19 +23,19 @@ export function PlatformSection() {
           />
         </MotionItem>
 
-        <MotionStagger className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <MotionStagger className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
           {platformFeatures.map((feature) => {
             const Icon = feature.icon;
 
             return (
               <MotionItem key={feature.title}>
-                <article className="glass-panel group relative overflow-hidden rounded-[2rem] p-8 transition duration-300 hover:-translate-y-1">
-                  <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-primary-container/10 blur-3xl transition group-hover:bg-secondary/15" />
-                  <div className={cn("mb-7 flex h-14 w-14 items-center justify-center rounded-2xl", toneClasses[feature.tone])}>
-                    <Icon size={25} />
+                <article className="glass-panel group relative overflow-hidden rounded-[2rem] p-9 transition duration-300 hover:-translate-y-1">
+                  <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary-container/10 blur-3xl transition group-hover:bg-secondary/20" />
+                  <div className={cn("mb-8 flex h-16 w-16 items-center justify-center rounded-2xl", toneClasses[feature.tone])}>
+                    <Icon size={28} />
                   </div>
-                  <h3 className="font-headline text-headline-md text-white">{feature.title}</h3>
-                  <p className="mt-4 text-body-md text-on-surface-variant">{feature.description}</p>
+                  <h3 className="font-headline text-2xl font-bold tracking-tight text-white">{feature.title}</h3>
+                  <p className="mt-4 font-body text-body-md leading-relaxed text-on-surface-variant">{feature.description}</p>
                 </article>
               </MotionItem>
             );
