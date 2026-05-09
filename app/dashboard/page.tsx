@@ -7,10 +7,9 @@ export default function DashboardPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Overview · Live"
-        title="Welcome back."
-        accent="Your signals are warm."
-        description="A live read on every lead, market, and forecast feeding into your TradePilot workspace."
+        eyebrow="Overview"
+        title="Welcome back"
+        description="A live read on every lead, market and forecast feeding into your workspace."
       />
 
       <KPIGrid />
@@ -22,13 +21,12 @@ export default function DashboardPage() {
 
       <div className="cta">
         <div>
-          <div className="cta-title">Ready to discover your next export market?</div>
+          <div className="cta-title">Discover your next export market</div>
           <div className="cta-sub">
-            Upload your sales data and let the AI find your best international clients.
+            Upload your sales data and let the model find your best international clients.
           </div>
         </div>
-
-        <button className="btn">Start Export Analysis</button>
+        <button className="btn">Start analysis</button>
       </div>
     </>
   );

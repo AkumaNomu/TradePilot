@@ -2,15 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3 } from "lucide-react";
+import {
+  BarChart3,
+  Compass,
+  LineChart,
+  ListOrdered,
+  TrendingUp,
+  UploadCloud
+} from "lucide-react";
 
 const links = [
-  ["Dashboard", "/dashboard"],
-  ["Upload Data", "/dashboard/upload"],
-  ["Forecast", "/dashboard/forecast"],
-  ["Market Explorer", "/dashboard/markets"],
-  ["Client Scoring", "/dashboard/scoring"],
-  ["Recommendations", "/dashboard/recommendations"],
+  { label: "Overview", href: "/dashboard", icon: TrendingUp },
+  { label: "Upload data", href: "/dashboard/upload", icon: UploadCloud },
+  { label: "Forecast", href: "/dashboard/forecast", icon: LineChart },
+  { label: "Markets", href: "/dashboard/markets", icon: Compass },
+  { label: "Scoring", href: "/dashboard/scoring", icon: ListOrdered },
+  { label: "Playbooks", href: "/dashboard/recommendations", icon: BarChart3 }
 ] as const;
 
 export default function Sidebar() {
@@ -20,19 +27,22 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="logo-wrap">
         <span className="logo-mark">
-          <BarChart3 size={18} strokeWidth={2.4} />
+          <BarChart3 size={16} strokeWidth={2.4} />
         </span>
         <div>
           <div className="logo-name">TradePilot</div>
-          <div className="logo-tag">Intelligence Suite</div>
+          <div className="logo-tag">Workspace</div>
         </div>
       </div>
 
-      <div className="nav-section">Workspace</div>
+      <div className="nav-section">Navigate</div>
       <nav className="nav">
-        {links.map(([label, href]) => (
+        {links.map(({ label, href, icon: Icon }) => (
           <Link key={href} href={href} className={`nav-btn ${pathname === href ? "active" : ""}`}>
-            <span>{label}</span>
+            <span className="flex items-center gap-2.5">
+              <Icon size={14} className="opacity-70" />
+              {label}
+            </span>
             {pathname === href && <div className="nav-dot" />}
           </Link>
         ))}
@@ -40,9 +50,8 @@ export default function Sidebar() {
 
       <div className="s-footer">
         <div className="s-footer-txt">
-          <div className="s-footer-eyebrow">Build · v1.0</div>
+          <div className="s-footer-eyebrow">v1.0</div>
           <div>Algeria Export Intelligence</div>
-          <div>© 2025 TradePilot</div>
         </div>
       </div>
     </aside>

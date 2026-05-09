@@ -6,11 +6,11 @@ import { ArrowLeft } from "lucide-react";
 
 const labels: Record<string, string> = {
   "/dashboard": "Overview",
-  "/dashboard/upload": "Upload Data",
+  "/dashboard/upload": "Upload data",
   "/dashboard/forecast": "Forecast",
-  "/dashboard/markets": "Market Explorer",
-  "/dashboard/scoring": "Client Scoring",
-  "/dashboard/recommendations": "Recommendations"
+  "/dashboard/markets": "Markets",
+  "/dashboard/scoring": "Scoring",
+  "/dashboard/recommendations": "Playbooks"
 };
 
 export default function Topbar() {
@@ -21,11 +21,11 @@ export default function Topbar() {
     <div className="topbar">
       <div className="topbar-left">
         <span className="topbar-pulse" />
-        <span>Live · {label}</span>
+        <span>{label}</span>
       </div>
       <Link href="/" className="topbar-back">
-        <ArrowLeft size={14} />
-        Back to Site
+        <ArrowLeft size={12} />
+        Home
       </Link>
     </div>
   );

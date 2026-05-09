@@ -5,22 +5,21 @@ export default function MarketsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Market Explorer"
-        title="Map your"
-        accent="next frontier."
+        eyebrow="Markets"
+        title="Market explorer"
         description="Discover where your products have the highest fit and lowest acquisition friction."
       />
 
       <section className="route-grid">
         <article className="route-card">
-          <span className="route-card-icon"><Globe2 size={18} /></span>
-          <h2 className="route-title">Opportunity Clusters</h2>
-          <p className="route-sub">Market grouping by demand signals, pricing sensitivity, and logistics feasibility.</p>
+          <span className="route-card-icon"><Globe2 size={16} /></span>
+          <h2 className="route-title">Opportunity clusters</h2>
+          <p className="route-sub">Markets grouped by demand signals, pricing sensitivity, and logistics feasibility.</p>
         </article>
         <article className="route-card">
-          <span className="route-card-icon"><Flame size={18} /></span>
-          <h2 className="route-title">Competitive Heat</h2>
-          <p className="route-sub">See saturation indicators and likely share capture potential before expansion.</p>
+          <span className="route-card-icon"><Flame size={16} /></span>
+          <h2 className="route-title">Competitive heat</h2>
+          <p className="route-sub">Saturation indicators and likely share capture potential before expansion.</p>
         </article>
       </section>
     </>

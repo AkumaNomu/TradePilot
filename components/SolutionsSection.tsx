@@ -9,7 +9,7 @@ export function SolutionsSection() {
     <section id="solutions" data-nav-section="solutions" className="px-5 py-section-gap md:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <MotionItem>
-          <div className="glass-panel gradient-border rounded-[2rem] p-6 md:p-8">
+          <div className="glass-panel rounded-[2rem] p-6 md:p-8">
             <p className="font-headline text-label-md uppercase tracking-[0.22em] text-secondary">
               Custom AI Systems
             </p>
@@ -26,7 +26,7 @@ export function SolutionsSection() {
         </MotionItem>
 
         <MotionItem>
-          <div className="glass-panel gradient-border rounded-[2rem] p-5 md:p-8">
+          <div className="glass-panel rounded-[2rem] p-5 md:p-8">
             <MotionStagger className="grid gap-4 sm:grid-cols-2" staggerChildren={0.06}>
               {solutionTags.map((tag) => {
                 const Icon = tag.icon;

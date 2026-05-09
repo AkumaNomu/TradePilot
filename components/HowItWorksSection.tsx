@@ -26,9 +26,9 @@ export function HowItWorksSection() {
 
             return (
               <MotionItem key={step.number}>
-                <article className="glass-panel gradient-border group flex h-full flex-col rounded-[1.6rem] p-6 transition duration-300 hover:-translate-y-1">
+                <article className="glass-panel group flex h-full flex-col rounded-[1.6rem] p-6 transition duration-300 hover:-translate-y-1">
                   <div className="mb-6 flex items-center justify-between">
-                    <p className="font-headline text-3xl font-black text-secondary/85">{step.number}</p>
+                    <p className="font-headline text-3xl font-bold text-secondary/85">{step.number}</p>
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 text-secondary shadow-cyan-glow">
                       <Icon size={21} />
                     </div>

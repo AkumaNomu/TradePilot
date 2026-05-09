@@ -20,14 +20,14 @@ export function StatsSection() {
             const Icon = stat.icon;
             return (
               <MotionItem key={stat.label}>
-                <div className="glass-panel gradient-border rounded-[2rem] p-5">
+                <div className="glass-panel rounded-[2rem] p-5">
                   <div className="flex items-center justify-between gap-3">
                     <p className="font-headline text-[11px] uppercase tracking-[0.18em] text-slate-300">{stat.label}</p>
                     <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-tertiary-container/15 text-tertiary shadow-green-glow">
                       <Icon size={18} />
                     </span>
                   </div>
-                  <p className="mt-4 font-headline text-2xl font-black tracking-[-0.04em] text-white">{stat.value}</p>
+                  <p className="mt-4 font-headline text-2xl font-semibold tracking-[-0.01em] text-white">{stat.value}</p>
                   <p className="mt-2 text-xs uppercase tracking-[0.16em] text-slate-400">Realtime</p>
                 </div>
               </MotionItem>

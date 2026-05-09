@@ -5,22 +5,21 @@ export default function ForecastPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Forecast Engine"
-        title="Predict the next"
-        accent="winning quarter."
-        description="Projection models for pipeline quality, conversion velocity, and revenue confidence."
+        eyebrow="Forecast"
+        title="Pipeline projections"
+        description="Models for pipeline quality, conversion velocity, and revenue confidence."
       />
 
       <section className="route-grid">
         <article className="route-card">
-          <span className="route-card-icon"><LineChart size={18} /></span>
-          <h2 className="route-title">30-Day Outlook</h2>
-          <p className="route-sub">AI estimates likely won opportunities and expected close value by destination market.</p>
+          <span className="route-card-icon"><LineChart size={16} /></span>
+          <h2 className="route-title">30-day outlook</h2>
+          <p className="route-sub">Likely won opportunities and expected close value by destination market.</p>
         </article>
         <article className="route-card">
-          <span className="route-card-icon"><AlertTriangle size={18} /></span>
-          <h2 className="route-title">Risk Signals</h2>
-          <p className="route-sub">Low activity accounts and delayed responses are surfaced as early warning indicators.</p>
+          <span className="route-card-icon"><AlertTriangle size={16} /></span>
+          <h2 className="route-title">Risk signals</h2>
+          <p className="route-sub">Low activity accounts and delayed responses surfaced as early warnings.</p>
         </article>
       </section>
     </>

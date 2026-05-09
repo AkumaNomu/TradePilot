@@ -7,11 +7,11 @@ export function Footer() {
   return (
     <footer className="px-5 py-12 md:px-8">
       <MotionStagger
-        className="glass-panel gradient-border mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-[2rem] px-6 py-8 md:flex-row md:px-8"
+        className="glass-panel mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 rounded-[2rem] px-6 py-8 md:flex-row md:px-8"
         staggerChildren={0.08}
       >
         <MotionItem>
-          <a href="#" className="font-headline text-xl font-black uppercase tracking-[-0.05em] text-white">
+          <a href="#" className="font-headline text-xl font-bold uppercase tracking-[-0.02em] text-white">
             TradePilot
           </a>
         </MotionItem>
