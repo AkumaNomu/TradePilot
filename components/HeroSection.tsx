@@ -9,6 +9,7 @@ import { hero } from "@/data/site";
 import { HeroPreview } from "@/components/HeroPreview";
 import { FloatingFx } from "@/components/FloatingFx";
 import { MouseFollower } from "@/components/MouseFollower";
+import { LiquidGlass } from "@/components/LiquidGlass";
 
 const easeOut = [0.2, 0.9, 0.2, 1] as const;
 
@@ -23,10 +24,15 @@ export function HeroSection() {
   return (
     <section
       data-nav-section="hero"
-      className="relative flex min-h-[calc(100vh-5rem)] flex-col items-center overflow-hidden px-5 pb-12 pt-28 md:px-8 md:pt-32"
+      className="relative flex min-h-[calc(100vh-5rem)] flex-col items-center px-5 pb-12 pt-28 md:px-8 md:pt-32"
     >
       <MouseFollower />
       <FloatingFx variant="hero" />
+
+      {/* Liquid glass background elements */}
+      <LiquidGlass variant="blob" intensity="light" className="top-20 left-10 w-80 h-80" />
+      <LiquidGlass variant="blob" intensity="light" className="bottom-32 right-20 w-96 h-96" style={{ animationDelay: "2s" }} />
+      <LiquidGlass variant="glow" intensity="medium" className="top-1/2 left-1/4 w-64 h-64" />
 
       <motion.div
         className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center"

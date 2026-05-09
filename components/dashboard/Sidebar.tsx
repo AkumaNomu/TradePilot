@@ -10,6 +10,7 @@ import {
   TrendingUp,
   UploadCloud
 } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 const links = [
   { label: "Overview", href: "/dashboard", icon: TrendingUp },
@@ -25,15 +26,7 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <div className="logo-wrap">
-        <span className="logo-mark">
-          <BarChart3 size={16} strokeWidth={2.4} />
-        </span>
-        <div>
-          <div className="logo-name">TradePilot</div>
-          <div className="logo-tag">Workspace</div>
-        </div>
-      </div>
+      <Logo variant="sidebar" />
 
       <div className="nav-section">Navigate</div>
       <nav className="nav">

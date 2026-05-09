@@ -102,16 +102,6 @@ export default function AreaChart({
 
       <rect x={padLeft} y={padTop} width={chartW} height={chartH} fill={`url(#grid-${id})`} />
 
-      {/* shimmer sweep */}
-      <motion.rect
-        x={padLeft - 120}
-        y={padTop}
-        width={140}
-        height={chartH}
-        fill={`url(#shimmer-${id})`}
-        animate={{ x: [padLeft - 140, padLeft + chartW + 20] }}
-        transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
-      />
 
       {/* Y axis labels */}
       {ySteps.map((v, i) => (

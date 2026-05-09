@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { AlertTriangle, BrainCircuit, Sparkles, TrendingUp } from "lucide-react";
 import PageHeader from "@/components/dashboard/PageHeader";
 import AreaChart from "@/components/dashboard/AreaChart";
+import { LiquidGlass } from "@/components/LiquidGlass";
 
 const forecast = [62, 64, 70, 72, 78, 84, 88, 96, 100, 108, 116, 124];
 const upper = forecast.map((v) => v + 14);
@@ -26,7 +27,7 @@ const scenarios = [
   {
     name: "Base case",
     desc: "Current run-rate continues, no major macro shifts.",
-    pipeline: "$8.42M",
+    pipeline: "DZD 8,420,000",
     confidence: 91,
     delta: "+12.8%",
     tone: "cyan"
@@ -34,7 +35,7 @@ const scenarios = [
   {
     name: "Bull case",
     desc: "MENA expansion lands; conversion rate +3pts.",
-    pipeline: "$10.6M",
+    pipeline: "DZD 10,600,000",
     confidence: 64,
     delta: "+41.2%",
     tone: "up"
@@ -42,7 +43,7 @@ const scenarios = [
   {
     name: "Bear case",
     desc: "Top 5 accounts slip a quarter; FX headwinds.",
-    pipeline: "$6.1M",
+    pipeline: "DZD 6,100,000",
     confidence: 18,
     delta: "-18.4%",
     tone: "down"
@@ -132,36 +133,39 @@ export default function ForecastPage() {
           {scenarios.map((s, i) => (
             <motion.article
               key={s.name}
-              className="dash-card"
+              className="dash-card relative overflow-hidden"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 + i * 0.07 }}
             >
-              <div className="flex items-start justify-between gap-2">
-                <div>
-                  <div className="cell-mono" style={{ color: "#c2c6d6" }}>{s.name}</div>
-                  <div
-                    className="mt-1 font-headline font-bold tracking-tight text-white"
-                    style={{ fontSize: "1.85rem", letterSpacing: "-0.02em" }}
-                  >
-                    {s.pipeline}
+              <LiquidGlass variant="blob" intensity="light" className="top-0 right-0 w-32 h-32" />
+              <div className="relative z-10">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <div className="cell-mono" style={{ color: "#c2c6d6" }}>{s.name}</div>
+                    <div
+                      className="mt-1 font-headline font-bold tracking-tight text-white"
+                      style={{ fontSize: "1.85rem", letterSpacing: "-0.02em" }}
+                    >
+                      {s.pipeline}
+                    </div>
                   </div>
+                  <span className={`chip ${s.tone}`}>{s.delta}</span>
                 </div>
-                <span className={`chip ${s.tone}`}>{s.delta}</span>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{s.desc}</p>
-              <div className="mt-4">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="cell-mono">Confidence</span>
-                  <span className="cell-mono" style={{ color: "#fff" }}>{s.confidence}%</span>
-                </div>
-                <div className="score-bar mt-2" style={{ width: "100%" }}>
-                  <motion.div
-                    className="score-bar-fill"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${s.confidence}%` }}
-                    transition={{ duration: 1, delay: 0.3 + i * 0.05 }}
-                  />
+                <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{s.desc}</p>
+                <div className="mt-4">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="cell-mono">Confidence</span>
+                    <span className="cell-mono" style={{ color: "#fff" }}>{s.confidence}%</span>
+                  </div>
+                  <div className="score-bar mt-2" style={{ width: "100%" }}>
+                    <motion.div
+                      className="score-bar-fill"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${s.confidence}%` }}
+                      transition={{ duration: 1, delay: 0.3 + i * 0.05 }}
+                    />
+                  </div>
                 </div>
               </div>
             </motion.article>
@@ -170,15 +174,16 @@ export default function ForecastPage() {
       </section>
 
       <div className="g21">
-        <section className="dash-card">
-          <div className="panel-head">
+        <section className="dash-card relative overflow-hidden">
+          <LiquidGlass variant="wave" intensity="light" className="absolute top-0 left-0 w-full h-32" />
+          <div className="panel-head relative z-10">
             <div>
               <h3 className="section-title">Forecast drivers</h3>
               <p className="section-sub">Top model features influencing this period</p>
             </div>
             <Sparkles size={14} className="text-secondary" />
           </div>
-          <div className="mt-4 grid gap-2.5">
+          <div className="mt-4 grid gap-2.5 relative z-10">
             {[
               { f: "Pipeline coverage", w: 0.92 },
               { f: "Stage-2 velocity", w: 0.78 },
@@ -208,8 +213,9 @@ export default function ForecastPage() {
           </div>
         </section>
 
-        <section className="dash-card">
-          <div className="panel-head">
+        <section className="dash-card relative overflow-hidden">
+          <LiquidGlass variant="glow" intensity="light" className="top-1/2 right-0 w-48 h-48" />
+          <div className="panel-head relative z-10">
             <div>
               <h3 className="section-title">Risk signals</h3>
               <p className="section-sub">Accounts trending below baseline</p>
@@ -218,7 +224,7 @@ export default function ForecastPage() {
               <AlertTriangle size={11} style={{ marginRight: 4 }} /> 4 active
             </span>
           </div>
-          <div style={{ display: "grid", gap: "0.55rem", marginTop: "0.95rem" }}>
+          <div style={{ display: "grid", gap: "0.55rem", marginTop: "0.95rem" }} className="relative z-10">
             {risks.map((r, i) => (
               <motion.div
                 key={r.account}

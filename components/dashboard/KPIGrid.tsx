@@ -3,9 +3,10 @@
 import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { LiquidGlass } from "@/components/LiquidGlass";
 
 const kpis = [
-  { label: "Pipeline value", value: 8.42, prefix: "$", suffix: "M", decimals: 2, delta: "+12.8%", trend: "up", series: [22, 28, 34, 30, 42, 48, 56, 62, 70] },
+  { label: "Pipeline value", value: 8420000, prefix: "DZD ", suffix: "", decimals: 0, delta: "+12.8%", trend: "up", series: [22, 28, 34, 30, 42, 48, 56, 62, 70] },
   { label: "Scored accounts", value: 1462, prefix: "", suffix: "", decimals: 0, delta: "+7.4%", trend: "up", series: [40, 38, 44, 49, 51, 56, 62, 64, 68] },
   { label: "Conversion rate", value: 18.9, prefix: "", suffix: "%", decimals: 1, delta: "+2.1%", trend: "up", series: [12, 14, 13, 16, 17, 17, 18, 18, 19] },
   { label: "Churn risk", value: 4.7, prefix: "", suffix: "%", decimals: 1, delta: "-0.9%", trend: "down", series: [12, 11, 10, 9, 8, 8, 7, 6, 5] }
@@ -73,7 +74,7 @@ export default function KPIGrid() {
         return (
           <motion.article
             key={item.label}
-            className="kpi"
+            className="kpi relative overflow-hidden"
             variants={{
               hidden: { opacity: 0, y: 16, filter: "blur(8px)" },
               show: { opacity: 1, y: 0, filter: "blur(0px)" }
@@ -82,29 +83,32 @@ export default function KPIGrid() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="kpi-label">
-              <span className="kpi-spark" />
-              {item.label}
-            </div>
-            <motion.div
-              className="kpi-val tabular-nums bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent"
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <AnimatedCounter
-                value={item.value}
-                prefix={item.prefix}
-                suffix={item.suffix}
-                decimals={item.decimals}
-              />
-            </motion.div>
-            <div className="mt-2 flex items-end justify-between gap-3">
-              <div className={`kpi-delta ${item.trend === "up" ? "up" : "down"}`}>
-                <Icon size={12} />
-                {item.delta} 30d
+            <LiquidGlass variant="glow" intensity="light" className="top-0 right-0 w-32 h-32" />
+            <div className="relative z-10">
+              <div className="kpi-label">
+                <span className="kpi-spark" />
+                {item.label}
               </div>
-              <div className="w-[60%] max-w-[120px]">
-                <MicroSpark values={item.series} color={color} />
+              <motion.div
+                className="kpi-val tabular-nums bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <AnimatedCounter
+                  value={item.value}
+                  prefix={item.prefix}
+                  suffix={item.suffix}
+                  decimals={item.decimals}
+                />
+              </motion.div>
+              <div className="mt-2 flex items-end justify-between gap-3">
+                <div className={`kpi-delta ${item.trend === "up" ? "up" : "down"}`}>
+                  <Icon size={12} />
+                  {item.delta} 30d
+                </div>
+                <div className="w-[60%] max-w-[120px]">
+                  <MicroSpark values={item.series} color={color} />
+                </div>
               </div>
             </div>
           </motion.article>
