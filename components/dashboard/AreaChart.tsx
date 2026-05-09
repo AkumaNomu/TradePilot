@@ -85,17 +85,33 @@ export default function AreaChart({
         </pattern>
         {series.map((s, i) => (
           <linearGradient key={i} id={`fill-${id}-${i}`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={s.color} stopOpacity="0.28" />
+            <stop offset="0%" stopColor={s.color} stopOpacity="0.32" />
             <stop offset="100%" stopColor={s.color} stopOpacity="0" />
           </linearGradient>
         ))}
         <linearGradient id={`band-${id}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={band?.color ?? "#4cd7f6"} stopOpacity="0.15" />
+          <stop offset="0%" stopColor={band?.color ?? "#4cd7f6"} stopOpacity="0.18" />
           <stop offset="100%" stopColor={band?.color ?? "#4cd7f6"} stopOpacity="0.02" />
+        </linearGradient>
+        <linearGradient id={`shimmer-${id}`} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+          <stop offset="50%" stopColor="rgba(255,255,255,0.1)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
         </linearGradient>
       </defs>
 
       <rect x={padLeft} y={padTop} width={chartW} height={chartH} fill={`url(#grid-${id})`} />
+
+      {/* shimmer sweep */}
+      <motion.rect
+        x={padLeft - 120}
+        y={padTop}
+        width={140}
+        height={chartH}
+        fill={`url(#shimmer-${id})`}
+        animate={{ x: [padLeft - 140, padLeft + chartW + 20] }}
+        transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+      />
 
       {/* Y axis labels */}
       {ySteps.map((v, i) => (
@@ -114,7 +130,7 @@ export default function AreaChart({
             textAnchor="end"
             fontSize="9"
             fill="rgba(194,198,214,0.6)"
-            fontFamily="ui-monospace, monospace"
+            fontFamily="var(--font-inter), sans-serif"
           >
             {Math.round(v)}
           </text>

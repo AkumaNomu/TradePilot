@@ -15,13 +15,12 @@ export function SectionHeading({ eyebrow, title, description, align = "center" }
       <MotionStagger delayChildren={0.04} staggerChildren={0.1}>
         {eyebrow ? (
           <MotionItem>
-            <div
-              className={`mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 backdrop-blur-md ${
-                align === "center" ? "" : ""
-              }`}
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(76,215,246,0.85)]" />
-              <span className="font-mono text-mono-sm uppercase tracking-[0.18em] text-secondary">
+            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 backdrop-blur-md">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inset-0 animate-ping rounded-full bg-secondary/50" />
+                <span className="relative h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(76,215,246,0.85)]" />
+              </span>
+              <span className="font-body text-[0.74rem] font-semibold tracking-wide text-secondary">
                 {eyebrow}
               </span>
             </div>

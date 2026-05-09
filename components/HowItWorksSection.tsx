@@ -26,16 +26,32 @@ export function HowItWorksSection() {
 
             return (
               <MotionItem key={step.number}>
-                <article className="glass-panel group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] p-7 transition duration-300 hover:-translate-y-1">
-                  <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-secondary/10 blur-3xl transition group-hover:bg-secondary/20" />
+                <article className="glass-panel lift-card group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] p-7">
+                  <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-secondary/10 blur-3xl transition group-hover:bg-secondary/25" />
+                  <div className="absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-tertiary/8 blur-3xl opacity-0 transition group-hover:opacity-100" />
                   <div className="relative mb-7 flex items-center justify-between">
-                    <p className="font-headline text-5xl font-extrabold tracking-tight text-white/[0.08]">{step.number}</p>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 text-secondary shadow-cyan-glow">
+                    <p
+                      className="font-headline text-6xl font-extrabold tracking-tighter"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(173,198,255,0.18), rgba(76,215,246,0.10) 50%, rgba(78,222,163,0.08))",
+                        WebkitBackgroundClip: "text",
+                        backgroundClip: "text",
+                        color: "transparent"
+                      }}
+                    >
+                      {step.number}
+                    </p>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/10 text-secondary shadow-cyan-glow transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
                       <Icon size={22} />
                     </div>
                   </div>
-                  <h3 className="relative font-headline text-headline-md text-white">{step.title}</h3>
-                  <p className="relative mt-3 font-body text-body-sm leading-relaxed text-on-surface-variant">{step.description}</p>
+                  <h3 className="relative font-headline text-2xl font-bold tracking-tight text-white">
+                    {step.title}
+                  </h3>
+                  <p className="relative mt-3 font-body text-[0.94rem] leading-relaxed text-on-surface-variant">
+                    {step.description}
+                  </p>
                 </article>
               </MotionItem>
             );

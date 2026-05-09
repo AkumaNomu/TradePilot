@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const kpis = [
-  { label: "Pipeline value", value: "$8.42M", delta: "+12.8%", trend: "up", series: [22, 28, 34, 30, 42, 48, 56, 62, 70] },
-  { label: "Scored accounts", value: "1,462", delta: "+7.4%", trend: "up", series: [40, 38, 44, 49, 51, 56, 62, 64, 68] },
-  { label: "Conversion rate", value: "18.9%", delta: "+2.1%", trend: "up", series: [12, 14, 13, 16, 17, 17, 18, 18, 19] },
-  { label: "Churn risk", value: "4.7%", delta: "-0.9%", trend: "down", series: [12, 11, 10, 9, 8, 8, 7, 6, 5] }
+  { label: "Pipeline value", value: 8.42, prefix: "$", suffix: "M", decimals: 2, delta: "+12.8%", trend: "up", series: [22, 28, 34, 30, 42, 48, 56, 62, 70] },
+  { label: "Scored accounts", value: 1462, prefix: "", suffix: "", decimals: 0, delta: "+7.4%", trend: "up", series: [40, 38, 44, 49, 51, 56, 62, 64, 68] },
+  { label: "Conversion rate", value: 18.9, prefix: "", suffix: "%", decimals: 1, delta: "+2.1%", trend: "up", series: [12, 14, 13, 16, 17, 17, 18, 18, 19] },
+  { label: "Churn risk", value: 4.7, prefix: "", suffix: "%", decimals: 1, delta: "-0.9%", trend: "down", series: [12, 11, 10, 9, 8, 8, 7, 6, 5] }
 ] as const;
 
 function MicroSpark({ values, color }: { values: readonly number[]; color: string }) {
@@ -23,8 +24,22 @@ function MicroSpark({ values, color }: { values: readonly number[]; color: strin
     return [x, y] as const;
   });
   const path = points.map(([x, y], i) => `${i === 0 ? "M" : "L"} ${x} ${y}`).join(" ");
+  const fillPath = `${path} L ${w} ${h} L 0 ${h} Z`;
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="h-7 w-full" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id={`ms-${color.replace(/[^a-z0-9]/gi, "")}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.4" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <motion.path
+        d={fillPath}
+        fill={`url(#ms-${color.replace(/[^a-z0-9]/gi, "")})`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      />
       <motion.path
         d={path}
         stroke={color}
@@ -69,7 +84,14 @@ export default function KPIGrid() {
               <span className="kpi-spark" />
               {item.label}
             </div>
-            <div className="kpi-val">{item.value}</div>
+            <div className="kpi-val tabular-nums">
+              <AnimatedCounter
+                value={item.value}
+                prefix={item.prefix}
+                suffix={item.suffix}
+                decimals={item.decimals}
+              />
+            </div>
             <div className="mt-2 flex items-end justify-between gap-3">
               <div className={`kpi-delta ${item.trend === "up" ? "up" : "down"}`}>
                 <Icon size={12} />

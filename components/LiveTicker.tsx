@@ -16,7 +16,7 @@ const items = [
 export function LiveTicker() {
   const seq = [...items, ...items];
   return (
-    <div className="relative w-full overflow-hidden border-y border-white/[0.06] bg-white/[0.015] py-3 backdrop-blur-md">
+    <div className="relative w-full overflow-hidden border-y border-white/[0.08] bg-white/[0.025] py-3.5 backdrop-blur-md">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-[#0a0f1e] to-transparent"
@@ -29,10 +29,10 @@ export function LiveTicker() {
         {seq.map((it, i) => (
           <div
             key={i}
-            className="flex shrink-0 items-center gap-2.5 font-mono text-mono-sm"
+            className="flex shrink-0 items-center gap-3 font-body text-[0.78rem] font-medium tracking-wide"
           >
             <span className="text-on-surface-variant/80">{it.sym}</span>
-            <span className={it.up ? "text-tertiary" : "text-primary"}>
+            <span className={`tabular-nums ${it.up ? "text-tertiary" : "text-primary"}`}>
               {it.up ? "▲" : "▼"} {it.val}
             </span>
             <span className="ml-2 h-1 w-1 rounded-full bg-white/15" />

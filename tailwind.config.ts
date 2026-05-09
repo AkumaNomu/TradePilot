@@ -53,8 +53,7 @@ const config: Config = {
       },
       fontFamily: {
         headline: ["var(--font-space-grotesk)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
+        body: ["var(--font-inter)", "sans-serif"]
       },
       fontSize: {
         "display-xl": ["clamp(3.75rem, 9vw, 7rem)", { lineHeight: "0.95", letterSpacing: "-0.045em", fontWeight: "800" }],
@@ -66,9 +65,8 @@ const config: Config = {
         "body-lg": ["1.125rem", { lineHeight: "1.6", fontWeight: "400" }],
         "body-md": ["1rem", { lineHeight: "1.55", fontWeight: "400" }],
         "body-sm": ["0.875rem", { lineHeight: "1.5", fontWeight: "400" }],
-        "label-md": ["0.75rem", { lineHeight: "1", letterSpacing: "0.08em", fontWeight: "700" }],
-        "label-sm": ["0.6875rem", { lineHeight: "1", letterSpacing: "0.14em", fontWeight: "700" }],
-        "mono-sm": ["0.75rem", { lineHeight: "1", letterSpacing: "0.04em", fontWeight: "500" }]
+        "label-md": ["0.75rem", { lineHeight: "1", letterSpacing: "0.04em", fontWeight: "600" }],
+        "label-sm": ["0.7rem", { lineHeight: "1", letterSpacing: "0.02em", fontWeight: "500" }]
       },
       boxShadow: {
         glow: "0 0 32px rgba(77, 142, 255, 0.32)",

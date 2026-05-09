@@ -29,13 +29,19 @@ export function PlatformSection() {
 
             return (
               <MotionItem key={feature.title}>
-                <article className="glass-panel group relative overflow-hidden rounded-[2rem] p-9 transition duration-300 hover:-translate-y-1">
-                  <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary-container/10 blur-3xl transition group-hover:bg-secondary/20" />
-                  <div className={cn("mb-8 flex h-16 w-16 items-center justify-center rounded-2xl", toneClasses[feature.tone])}>
+                <article className="glass-panel lift-card group relative overflow-hidden rounded-[2rem] p-9">
+                  <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary-container/10 blur-3xl transition duration-500 group-hover:bg-secondary/25" />
+                  <div className="absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-tertiary/5 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div
+                    className={cn(
+                      "relative mb-8 flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3",
+                      toneClasses[feature.tone]
+                    )}
+                  >
                     <Icon size={28} />
                   </div>
-                  <h3 className="font-headline text-2xl font-bold tracking-tight text-white">{feature.title}</h3>
-                  <p className="mt-4 font-body text-body-md leading-relaxed text-on-surface-variant">{feature.description}</p>
+                  <h3 className="relative font-headline text-2xl font-bold tracking-tight text-white">{feature.title}</h3>
+                  <p className="relative mt-4 font-body text-body-md leading-relaxed text-on-surface-variant">{feature.description}</p>
                 </article>
               </MotionItem>
             );

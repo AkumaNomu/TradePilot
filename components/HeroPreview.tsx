@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Zap } from "lucide-react";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const easeOut = [0.2, 0.9, 0.2, 1] as const;
 
 const kpis = [
-  { label: "Pipeline", value: "$8.42M", delta: "+12.8%" },
-  { label: "Lead Score", value: "92 / 100", delta: "+4.1%" },
-  { label: "Conversion", value: "18.9%", delta: "+2.1%" }
+  { label: "Pipeline", value: 8.42, prefix: "$", suffix: "M", decimals: 2, delta: "+12.8%" },
+  { label: "Lead Score", value: 92, prefix: "", suffix: " / 100", decimals: 0, delta: "+4.1%" },
+  { label: "Conversion", value: 18.9, prefix: "", suffix: "%", decimals: 1, delta: "+2.1%" }
 ];
 
 const sparkline = [42, 48, 44, 56, 52, 64, 58, 72, 68, 80, 76, 88];
@@ -46,6 +47,11 @@ function Sparkline() {
         <pattern id="hp-grid" width="38" height="22" patternUnits="userSpaceOnUse">
           <path d="M 38 0 L 0 0 0 22" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
         </pattern>
+        <linearGradient id="hp-shimmer" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+          <stop offset="50%" stopColor="rgba(255,255,255,0.18)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+        </linearGradient>
       </defs>
       <rect width={w} height={h} fill="url(#hp-grid)" />
       <motion.path
@@ -65,6 +71,16 @@ function Sparkline() {
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ duration: 1.4, ease: easeOut, delay: 0.7 }}
+      />
+      {/* shimmer sweep */}
+      <motion.rect
+        x={-100}
+        y={0}
+        width={120}
+        height={h}
+        fill="url(#hp-shimmer)"
+        animate={{ x: [-120, w + 20] }}
+        transition={{ duration: 4.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 1.5 }}
       />
       {points.map(([x, y], i) =>
         i === points.length - 1 ? (
@@ -106,11 +122,13 @@ export function HeroPreview() {
     >
       <div className="absolute inset-x-12 -top-8 h-16 rounded-full bg-gradient-to-r from-transparent via-secondary/35 to-transparent blur-3xl" />
 
-      <div
-        className="glass-panel relative overflow-hidden rounded-md p-3 md:p-4"
-        style={{ boxShadow: "0 50px 130px -22px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.07)" }}
+      <motion.div
+        whileHover={{ y: -3 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="glass-panel shimmer-bg relative overflow-hidden rounded-2xl p-3 md:p-4"
+        style={{ boxShadow: "0 50px 130px -22px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.08)" }}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-white/[0.07] px-3 pb-3">
+        <div className="relative z-10 flex items-center justify-between gap-3 border-b border-white/[0.07] px-3 pb-3">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
             <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
@@ -121,22 +139,27 @@ export function HeroPreview() {
               <span className="absolute inset-0 animate-ping rounded-full bg-tertiary/60" />
               <span className="relative h-1.5 w-1.5 rounded-full bg-tertiary" />
             </span>
-            <span className="font-mono text-mono-sm uppercase">tradepilot.app/dashboard</span>
+            <span className="font-body text-[0.78rem] font-medium tracking-wide">tradepilot.app/dashboard</span>
           </div>
-          <span className="font-mono text-mono-sm uppercase tracking-[0.14em] text-tertiary">● Live</span>
+          <span className="font-body text-[0.74rem] font-semibold tracking-wide text-tertiary">● Live</span>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 p-3 md:grid-cols-[1.6fr_1fr]">
-          <div className="relative overflow-hidden rounded-md border border-white/[0.07] bg-white/[0.02] p-5">
+        <div className="relative z-10 grid grid-cols-1 gap-3 p-3 md:grid-cols-[1.6fr_1fr]">
+          <motion.div
+            whileHover={{ y: -2 }}
+            className="relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.025] p-5 backdrop-blur-md"
+          >
             <div className="flex items-baseline justify-between">
               <div>
-                <p className="flex items-center gap-1.5 font-mono text-mono-sm uppercase tracking-[0.14em] text-on-surface-variant">
-                  <Zap size={11} className="text-secondary" />
+                <p className="flex items-center gap-1.5 font-body text-[0.78rem] font-medium tracking-wide text-on-surface-variant">
+                  <Zap size={12} className="text-secondary" />
                   Pipeline Momentum
                 </p>
-                <p className="mt-2 font-headline text-3xl font-bold tracking-tight text-white">$8.42M</p>
+                <p className="mt-2 font-headline text-3xl font-bold tracking-tight text-white tabular-nums">
+                  <AnimatedCounter value={8.42} prefix="$" suffix="M" decimals={2} />
+                </p>
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full border border-tertiary/30 bg-tertiary/10 px-2.5 py-1 font-mono text-mono-sm uppercase tracking-[0.12em] text-tertiary">
+              <span className="inline-flex items-center gap-1 rounded-full border border-tertiary/30 bg-tertiary/10 px-2.5 py-1 font-body text-[0.7rem] font-semibold tracking-wide text-tertiary">
                 <ArrowUpRight size={11} />
                 12.8%
               </span>
@@ -144,14 +167,14 @@ export function HeroPreview() {
             <div className="mt-5 h-28">
               <Sparkline />
             </div>
-            <div className="mt-3 flex items-center justify-between font-mono text-mono-sm uppercase tracking-[0.14em] text-on-surface-variant/70">
+            <div className="mt-3 flex items-center justify-between font-body text-[0.7rem] font-medium tracking-wide text-on-surface-variant/70">
               <span>Jan</span>
               <span>Apr</span>
               <span>Jul</span>
               <span>Oct</span>
               <span>Dec</span>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 gap-3">
             {kpis.map((k, i) => (
@@ -159,17 +182,25 @@ export function HeroPreview() {
                 key={k.label}
                 initial={{ opacity: 0, x: 18 }}
                 animate={{ opacity: 1, x: 0 }}
+                whileHover={{ y: -2, borderColor: "rgba(255,255,255,0.16)" }}
                 transition={{ duration: 0.6, ease: easeOut, delay: 1.0 + i * 0.1 }}
-                className="rounded-md border border-white/[0.07] bg-white/[0.02] p-4"
+                className="rounded-xl border border-white/[0.08] bg-white/[0.025] p-4 backdrop-blur-md"
               >
-                <p className="font-mono text-mono-sm uppercase tracking-[0.14em] text-on-surface-variant">{k.label}</p>
-                <p className="mt-1.5 font-headline text-2xl font-bold tracking-tight text-white">{k.value}</p>
-                <p className="mt-0.5 font-mono text-mono-sm uppercase tracking-[0.12em] text-tertiary">▲ {k.delta}</p>
+                <p className="font-body text-[0.74rem] font-medium tracking-wide text-on-surface-variant">{k.label}</p>
+                <p className="mt-1.5 font-headline text-2xl font-bold tracking-tight text-white tabular-nums">
+                  <AnimatedCounter
+                    value={k.value}
+                    prefix={k.prefix}
+                    suffix={k.suffix}
+                    decimals={k.decimals}
+                  />
+                </p>
+                <p className="mt-1 font-body text-[0.72rem] font-semibold tracking-wide text-tertiary">▲ {k.delta}</p>
               </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

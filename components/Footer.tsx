@@ -12,8 +12,11 @@ export function Footer() {
       >
         <MotionItem>
           <a href="#" className="flex items-center gap-2.5 text-white">
-            <span className="h-2.5 w-2.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(76,215,246,0.85)]" />
-            <span className="font-headline text-base font-extrabold uppercase tracking-[0.18em] text-white">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inset-0 animate-ping rounded-full bg-secondary/50" />
+              <span className="relative h-2.5 w-2.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(76,215,246,0.85)]" />
+            </span>
+            <span className="font-headline text-[0.95rem] font-extrabold uppercase tracking-[0.2em] text-white">
               TradePilot
             </span>
           </a>
@@ -25,7 +28,7 @@ export function Footer() {
               <a
                 key={link}
                 href="#"
-                className="font-mono text-mono-sm uppercase tracking-[0.16em] text-on-surface-variant transition hover:text-secondary"
+                className="font-body text-[0.84rem] font-medium tracking-tight text-on-surface-variant transition hover:text-secondary"
               >
                 {link}
               </a>
@@ -34,7 +37,7 @@ export function Footer() {
         </MotionItem>
 
         <MotionItem>
-          <p className="font-mono text-mono-sm uppercase tracking-[0.14em] text-on-surface-variant/70">
+          <p className="font-body text-[0.78rem] font-medium tracking-tight text-on-surface-variant/70">
             © 2026 TradePilot Systems
           </p>
         </MotionItem>

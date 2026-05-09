@@ -219,10 +219,11 @@ export default function OnboardingFlow() {
             <span className="relative h-2.5 w-2.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(76,215,246,0.85)]" />
           </span>
           <BarChart3 className="h-4 w-4 text-white" />
-          <span className="font-headline text-sm font-extrabold uppercase tracking-[0.22em] text-white">TradePilot</span>
+          <span className="font-headline text-sm font-extrabold uppercase tracking-[0.2em] text-white">TradePilot</span>
         </div>
-        <span className="font-mono text-mono-sm uppercase tracking-[0.18em] text-on-surface-variant">
-          STEP {step} / 3
+        <span className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.025] px-3 py-1 backdrop-blur-md">
+          <span className="font-body text-[0.74rem] font-semibold tracking-wide text-secondary">Step {step}</span>
+          <span className="font-body text-[0.74rem] font-medium tracking-wide text-on-surface-variant/70">of 3</span>
         </span>
       </header>
 

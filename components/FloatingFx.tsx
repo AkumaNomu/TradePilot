@@ -78,6 +78,30 @@ export function FloatingFx({ variant = "ambient" }: { variant?: Variant }) {
         />
       ))}
 
+      {/* Floating glass shards (premium accent shapes) */}
+      {variant === "hero" ? (
+        <>
+          <motion.div
+            className="absolute left-[8%] top-[28%] hidden h-32 w-24 rounded-2xl border border-white/10 bg-white/[0.025] backdrop-blur-md md:block"
+            style={{ boxShadow: "0 30px 80px -24px rgba(76,215,246,0.18)" }}
+            initial={{ opacity: 0, rotate: -8 }}
+            animate={{ opacity: 0.9, y: [0, -14, 0], rotate: [-8, -6, -8] }}
+            transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 9, repeat: Infinity, ease: "easeInOut" }, opacity: { duration: 1.4 } }}
+          >
+            <div className="absolute inset-2 rounded-xl bg-gradient-to-br from-secondary/15 via-primary/10 to-transparent" />
+          </motion.div>
+          <motion.div
+            className="absolute right-[6%] top-[40%] hidden h-28 w-28 rounded-2xl border border-white/10 bg-white/[0.025] backdrop-blur-md md:block"
+            style={{ boxShadow: "0 30px 80px -24px rgba(78,222,163,0.18)" }}
+            initial={{ opacity: 0, rotate: 8 }}
+            animate={{ opacity: 0.85, y: [0, 12, 0], rotate: [8, 10, 8] }}
+            transition={{ y: { duration: 7, repeat: Infinity, ease: "easeInOut" }, rotate: { duration: 10, repeat: Infinity, ease: "easeInOut" }, opacity: { duration: 1.4 } }}
+          >
+            <div className="absolute inset-2 rounded-xl bg-gradient-to-br from-tertiary/15 via-secondary/10 to-transparent" />
+          </motion.div>
+        </>
+      ) : null}
+
       {/* Connecting line/mesh hint - subtle horizontal gradient lines */}
       {variant === "hero" ? (
         <svg
